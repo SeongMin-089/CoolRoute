@@ -1,2 +1,11 @@
-.page--home {
+.home-ui-preview {
+  display: grid;
+  gap: 16px;
+
+  &__badges,
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }

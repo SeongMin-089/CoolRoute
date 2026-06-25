@@ -1,0 +1,43 @@
+@use '../abstracts/variables' as *;
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+
+  &--default {
+    border: 1px solid rgba($color-sky-300, 0.45);
+    background: rgba($color-sky-50, 0.9);
+    color: #0074a8;
+  }
+
+  &--glass {
+    border: 1px solid rgba($color-white, 0.35);
+    background: rgba($color-white, 0.18);
+    color: $color-white;
+    backdrop-filter: blur(12px);
+    font-size: 16px;
+  }
+
+  &__dot {
+    flex: 0 0 auto;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}
+
+.section-badge--default .section-badge__dot {
+  background: $color-sky-700;
+}
+
+.section-badge--glass .section-badge__dot {
+  background: $color-mint-400;
+}
