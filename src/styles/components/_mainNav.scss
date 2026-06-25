@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as *;
+
+.main-nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__link {
+    color: $color-text;
+
+    &.active {
+      color: $color-sky-700;
+      font-weight: 700;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+}

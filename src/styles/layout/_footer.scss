@@ -1,0 +1,13 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.site-footer {
+  border-top: 1px solid $color-border;
+  background: $color-sky-50;
+
+  &__inner {
+    @include container;
+    padding: 32px 0;
+    color: $color-muted;
+  }
+}

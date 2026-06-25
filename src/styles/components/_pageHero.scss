@@ -1,0 +1,20 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.page-hero {
+  background: $color-sky-50;
+
+  &__inner {
+    @include container;
+    padding: 72px 0;
+  }
+
+  h1 {
+    margin-bottom: 12px;
+    color: $color-sky-700;
+  }
+
+  p {
+    color: $color-muted;
+  }
+}

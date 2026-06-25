@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as *;
+
+.dashboard-card {
+  min-height: 140px;
+  padding: 20px;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  background: $color-white;
+
+  h3 {
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: $color-muted;
+  }
+}

@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.sub-nav {
+  border-bottom: 1px solid $color-border;
+  background: $color-white;
+
+  &__list {
+    @include container;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 14px 0;
+  }
+
+  &__button {
+    white-space: nowrap;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    padding: 8px 12px;
+    background: $color-white;
+    color: $color-text;
+  }
+}

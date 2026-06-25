@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  color: $color-text;
+  background: $color-white;
+}
+
+button {
+  cursor: pointer;
+}
