@@ -1,6 +1,13 @@
+import type { ReactNode } from 'react'
 import SectionTitle from './SectionTitle'
 
-function SectionBlock({ id, title, children }) {
+interface SectionBlockProps {
+  id: string
+  title: string
+  children?: ReactNode
+}
+
+function SectionBlock({ id, title, children }: SectionBlockProps) {
   return (
     <section id={id} className="section-block">
       <SectionTitle title={title} />

@@ -1,9 +1,20 @@
+import type { ReactNode } from 'react'
+
+type SectionBadgeVariant = 'default' | 'glass'
+
+interface SectionBadgeProps {
+  variant?: SectionBadgeVariant
+  dot?: boolean
+  className?: string
+  children: ReactNode
+}
+
 function SectionBadge({
   variant = 'default',
   dot = true,
   className = '',
   children,
-}) {
+}: SectionBadgeProps) {
   const badgeClassName = [
     'section-badge',
     `section-badge--${variant}`,

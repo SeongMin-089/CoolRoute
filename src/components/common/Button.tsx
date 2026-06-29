@@ -1,4 +1,15 @@
 import { Link } from 'react-router-dom'
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
+
+type ButtonVariant = 'primary' | 'outline'
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant
+  arrow?: boolean
+  to?: string
+  className?: string
+  children: ReactNode
+}
 
 function Button({
   variant = 'primary',
@@ -8,7 +19,7 @@ function Button({
   children,
   type = 'button',
   ...props
-}) {
+}: ButtonProps) {
   const buttonClassName = ['button', `button--${variant}`, className]
     .filter(Boolean)
     .join(' ')
@@ -22,7 +33,7 @@ function Button({
 
   if (to) {
     return (
-      <Link to={to} className={buttonClassName} {...props}>
+      <Link to={to} className={buttonClassName}>
         {content}
       </Link>
     )

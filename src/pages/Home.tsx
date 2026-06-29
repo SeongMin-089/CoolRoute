@@ -1,6 +1,4 @@
-import Button from "../components/common/Button"
 import PageHero from "../components/common/PageHero"
-import SectionBadge from "../components/common/SectionBadge"
 import SectionBlock from "../components/common/SectionBlock"
 
 function Home() {

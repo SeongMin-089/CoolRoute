@@ -1,5 +1,11 @@
-function SubNav({ items = [] }) {
-  const handleClick = (sectionId) => {
+import type { SubNavItem } from '../../data/subNavData'
+
+interface SubNavProps {
+  items?: SubNavItem[]
+}
+
+function SubNav({ items = [] }: SubNavProps) {
+  const handleClick = (sectionId: string) => {
     const section = document.getElementById(sectionId)
 
     if (section) {

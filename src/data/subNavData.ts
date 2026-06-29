@@ -1,4 +1,18 @@
-export const subNavItems = {
+export interface SubNavItem {
+  label: string
+  id: string
+}
+
+export interface SubNavData {
+  company: SubNavItem[]
+  business: SubNavItem[]
+  solution: SubNavItem[]
+  logisticsInfo: SubNavItem[]
+  support: SubNavItem[]
+  recruit: SubNavItem[]
+}
+
+export const subNavItems: SubNavData = {
   company: [
     { label: '회사 개요', id: 'overview' },
     { label: '경영이념', id: 'philosophy' },

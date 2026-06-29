@@ -1,4 +1,9 @@
-export const navItems = [
+export interface RouteItem {
+  label: string
+  path: string
+}
+
+export const navItems: RouteItem[] = [
   { label: '회사소개', path: '/company' },
   { label: '사업분야', path: '/business' },
   { label: '물류솔루션', path: '/solution' },

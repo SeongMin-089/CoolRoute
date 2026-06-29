@@ -1,4 +1,14 @@
-export const dashboardCards = {
+export interface DashboardCardItem {
+  title: string
+}
+
+export interface DashboardData {
+  store: DashboardCardItem[]
+  driver: DashboardCardItem[]
+  center: DashboardCardItem[]
+}
+
+export const dashboardCards: DashboardData = {
   store: [
     { title: 'Store card 01' },
     { title: 'Store card 02' },
