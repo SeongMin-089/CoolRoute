@@ -17,6 +17,16 @@ interface HeroStat {
   label: string
 }
 
+interface NetworkRegion {
+  id: string
+  code: string
+  title: string
+  description: string
+  mapLabel: string
+  x: number
+  y: number
+}
+
 const heroSlides: HeroSlide[] = [
   {
     id: "main-road",
@@ -54,8 +64,66 @@ const heroStats: HeroStat[] = [
   { value: "24h", label: "실시간 온도 관제" },
 ]
 
+const networkRegions: NetworkRegion[] = [
+  {
+    id: "capital",
+    code: "수도",
+    title: "수도권 메인 허브",
+    description: "서울·경기 점포 순환 · 야간 회차",
+    mapLabel: "수도권",
+    x: 33,
+    y: 25,
+  },
+  {
+    id: "gangwon",
+    code: "강원",
+    title: "강원 거점",
+    description: "강원권 간선 연계 · 정온 중계",
+    mapLabel: "강원",
+    x: 58,
+    y: 17,
+  },
+  {
+    id: "chungcheong",
+    code: "충청",
+    title: "충청 크로스도크",
+    description: "중부권 분기 · 긴급 배차",
+    mapLabel: "충청",
+    x: 43,
+    y: 42,
+  },
+  {
+    id: "yeongnam",
+    code: "영남",
+    title: "영남 냉동 거점",
+    description: "냉동 간편식 · 아이스크림 보관",
+    mapLabel: "영남",
+    x: 64,
+    y: 55,
+  },
+  {
+    id: "honam",
+    code: "호남",
+    title: "호남 물류",
+    description: "호남권 출고 · 권역 일괄 처리",
+    mapLabel: "호남",
+    x: 35,
+    y: 62,
+  },
+  {
+    id: "jeju",
+    code: "제주",
+    title: "제주 연계망",
+    description: "도서 지역 출고 이력 일일 리포트",
+    mapLabel: "제주",
+    x: 40,
+    y: 90,
+  },
+]
+
 function Home() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [activeRegionId, setActiveRegionId] = useState(networkRegions[0].id)
   const [isDragging, setIsDragging] = useState(false)
   const dragStartXRef = useRef<number | null>(null)
   const dragEndXRef = useRef<number | null>(null)
@@ -97,16 +165,6 @@ function Home() {
     dragEndXRef.current = null
     setIsDragging(false)
   }
-
-  // useEffect(() => {
-  //   const slideTimer = window.setInterval(() => {
-  //     setActiveIndex((currentIndex) => (currentIndex + 1) % heroSlides.length)
-  //   }, 15000)
-
-  //   return () => {
-  //     window.clearInterval(slideTimer)
-  //   }
-  // }, [])
 
   return (
     <div className="page page--home">
@@ -181,6 +239,85 @@ function Home() {
               </article>
             )
           })}
+        </div>
+      </section>
+
+      <section className="home-network" aria-labelledby="home-network-title">
+        <div className="home-network__inner">
+          <div className="home-network__content">
+            <span className="home-network__badge">
+              <span className="home-network__badge-dot" />
+              전국 6개 거점
+            </span>
+
+            <h2 id="home-network-title">전국 콜드체인 물류 네트워크</h2>
+
+            <p>
+              권역별 6개 정온 물류센터가 전국 점포망의 신선 배송을 책임집니다.
+            </p>
+
+            <div className="home-network__cards">
+              {networkRegions.map((region) => {
+                const isActive = activeRegionId === region.id
+
+                return (
+                  <button
+                    key={region.id}
+                    type="button"
+                    className={`home-network__card${
+                      isActive ? " is-active" : ""
+                    }`}
+                    onClick={() => setActiveRegionId(region.id)}
+                    aria-pressed={isActive}
+                  >
+                    <span className="home-network__card-code">
+                      {region.code}
+                    </span>
+                    <span className="home-network__card-text">
+                      <strong>{region.title}</strong>
+                      <span>{region.description}</span>
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          <div className="home-network__map-area">
+            <div className="home-network__map">
+              <img
+                className="home-network__map-image"
+                src="/network-map.svg"
+                alt="전국 콜드체인 물류 네트워크 지도"
+              />
+
+              {networkRegions.map((region) => {
+                const isActive = activeRegionId === region.id
+
+                return (
+                  <button
+                    key={region.id}
+                    type="button"
+                    className={`home-network__pin${
+                      isActive ? " is-active" : ""
+                    }`}
+                    style={{
+                      left: `${region.x}%`,
+                      top: `${region.y}%`,
+                    }}
+                    onClick={() => setActiveRegionId(region.id)}
+                    aria-label={`${region.mapLabel} 거점 보기`}
+                    aria-pressed={isActive}
+                  >
+                    <span className="home-network__pin-dot" />
+                    <span className="home-network__pin-label">
+                      {region.mapLabel}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </div>
