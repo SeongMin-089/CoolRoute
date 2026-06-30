@@ -5,7 +5,7 @@
   width: 40px;
   height: 40px;
   border: 1px solid $color-border;
-  border-radius: $radius-xs;
+  border-radius: $radius-md;
   background: $color-white;
 
   &__line {
@@ -17,7 +17,7 @@
   }
 }
 
-@media (max-width: $breakpoint-mobile) {
+@media (max-width: $breakpoint-tablet) {
   .mobile-menu {
     display: block;
   }

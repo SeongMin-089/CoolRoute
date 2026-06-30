@@ -2,12 +2,243 @@
 @use '../abstracts/mixins' as *;
 
 .site-footer {
-  border-top: 1px solid $color-border;
   background: $color-bg-section;
+  color: $color-muted;
 
   &__inner {
     @include container;
-    padding: 32px 0;
+    padding: $space-64 0 $space-32;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 320px 1fr 320px;
+    gap: $space-56;
+    align-items: start;
+    padding-bottom: $space-56;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-12;
+    color: $color-text-strong;
+    font-weight: 600;
+  }
+
+  &__logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $color-sky 0%, $color-primary 100%);
+    box-shadow: 0 8px 20px rgba($color-primary, 0.22);
+
+    img {
+      display: block;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__logo-text {
+    color: $color-text-strong;
+    font-size: 18px;
+  }
+
+  &__info {
+    margin-top: $space-24;
+    display: grid;
+    gap: $space-20;
+  }
+
+  &__info-label {
+    display: block;
+    margin-bottom: $space-10;
+    color: $color-subtle;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  &__info-group p {
+    color: $color-text;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(96px, 1fr));
+    gap: $space-24;
+  }
+
+  &__menu-title {
+    margin-bottom: $space-16;
+    color: $color-text-strong;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__menu-list {
+    display: grid;
+    gap: $space-12;
+  }
+
+  &__menu-link {
     color: $color-muted;
+    font-size: 13px;
+    line-height: 1.5;
+    word-break: keep-all;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__support-title {
+    margin-bottom: $space-16;
+    color: $color-text-strong;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__support-list {
+    display: grid;
+    gap: $space-20;
+  }
+
+  &__support-label {
+    display: block;
+    margin-bottom: $space-8;
+    color: $color-subtle;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  &__support-text {
+    color: $color-text;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  &__login {
+    width: fit-content;
+    min-height: 40px;
+    margin-top: $space-20;
+    padding: 0 $space-20;
+    border: 1px solid $color-border;
+    border-radius: $radius-full;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-white;
+    color: $color-text;
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+      border-color $transition-fast,
+      color $transition-fast,
+      background $transition-fast;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+      background: $color-primary-light;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: $space-40;
+    padding-top: $space-24;
+    border-top: 1px solid $color-border;
+  }
+
+  &__policy-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-16;
+    margin-bottom: $space-24;
+
+    a {
+      color: $color-muted;
+      font-size: 13px;
+    }
+  }
+
+  &__company,
+  &__copy,
+  &__slogan {
+    color: $color-muted;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  &__company {
+    margin-bottom: $space-16;
+  }
+
+  &__slogan {
+    align-self: flex-end;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: $breakpoint-desktop) {
+  .site-footer {
+    &__top {
+      grid-template-columns: 280px 1fr;
+    }
+
+    &__support {
+      grid-column: 1 / -1;
+    }
+
+    &__nav {
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .site-footer {
+    &__top {
+      grid-template-columns: 1fr;
+      gap: $space-48;
+    }
+
+    &__nav {
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+
+    &__bottom {
+      flex-direction: column;
+    }
+
+    &__slogan {
+      align-self: flex-start;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .site-footer {
+    &__inner {
+      padding: $space-64 0 $space-32;
+    }
+
+    &__nav {
+      grid-template-columns: 1fr;
+    }
+
+    &__policy-list {
+      gap: $space-12;
+    }
   }
 }

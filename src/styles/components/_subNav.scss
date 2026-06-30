@@ -2,28 +2,127 @@
 @use '../abstracts/mixins' as *;
 
 .sub-nav {
-  border-bottom: 1px solid $color-border;
-  background: $color-white;
+  position: sticky;
+  top: calc($header-height + $space-12);
+  z-index: 20;
+  margin-top: $space-20;
+  margin-bottom: $space-24;
+  pointer-events: none;
 
-  &__list {
+  &__inner {
     @include container;
     display: flex;
-    gap: 8px;
+    justify-content: center;
+  }
+
+  &__list {
+    width: fit-content;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    gap: $space-4;
     overflow-x: auto;
-    padding: 14px 0;
+    padding: $space-6;
+    border: 1px solid $color-border;
+    border-radius: $radius-full;
+    background: rgba($color-white, 0.94);
+    box-shadow: $shadow-sm;
+    backdrop-filter: blur(16px);
+    pointer-events: auto;
+  }
+
+  &__item {
+    flex: 0 0 auto;
   }
 
   &__button {
+    min-width: 128px;
+    height: 44px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: $radius-md;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-8;
+    background: transparent;
+    color: $color-muted;
+    font-size: 13px;
+    font-weight: 600;
     white-space: nowrap;
-    border: 1px solid $color-border;
-    border-radius: $radius-xs;
-    padding: 8px 12px;
-    background: $color-white;
-    color: $color-text;
+    transition:
+      color $transition-fast,
+      background $transition-fast,
+      box-shadow $transition-fast,
+      transform $transition-fast;
 
     &:hover {
-      border-color: $color-primary;
       color: $color-primary;
+      background: $color-primary-light;
+    }
+
+    &.is-active {
+      color: $color-white;
+      background: linear-gradient(135deg, $color-sky 0%, $color-primary 100%);
+      box-shadow: 0 8px 18px rgba($color-primary, 0.2);
+    }
+
+    &.is-active .sub-nav__icon {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 auto;
+    border: 1.5px solid currentColor;
+    border-radius: $radius-xs;
+    opacity: 0.8;
+  }
+
+  &__label {
+    line-height: 1;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .sub-nav {
+    top: calc($header-height + $space-8);
+    margin-top: $space-16;
+    margin-bottom: $space-24;
+
+    &__inner {
+      justify-content: flex-start;
+    }
+
+    &__list {
+      width: 100%;
+      justify-content: flex-start;
+      border-radius: $radius-xl;
+    }
+
+    &__button {
+      min-width: 116px;
+      height: 40px;
+      padding: 0 14px;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .sub-nav {
+    &__button {
+      min-width: 108px;
+      height: 38px;
+      padding: 0 $space-12;
+      font-size: 12px;
+    }
+
+    &__icon {
+      width: 12px;
+      height: 12px;
     }
   }
 }
