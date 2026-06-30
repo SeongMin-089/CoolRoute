@@ -3,7 +3,7 @@
 
 .site-footer {
   border-top: 1px solid $color-border;
-  background: $color-sky;
+  background: $color-bg-section;
 
   &__inner {
     @include container;

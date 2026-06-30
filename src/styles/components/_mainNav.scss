@@ -11,13 +11,13 @@
     color: $color-text;
 
     &.active {
-      color: $color-sky;
+      color: $color-primary;
       font-weight: 700;
     }
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-mobile) {
   .main-nav {
     display: none;
   }

@@ -4,11 +4,11 @@
 .section-block {
   @include container;
   @include section-spacing;
-  scroll-margin-top: 96px;
+  scroll-margin-top: $space-96;
   border-bottom: 1px solid $color-border;
 
   .section-title {
-    margin-bottom: 16px;
+    margin-bottom: $space-16;
   }
 
   &__content {

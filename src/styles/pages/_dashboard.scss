@@ -7,7 +7,7 @@
 
   h1 {
     margin-bottom: 24px;
-    color: $color-sky-700;
+    color: $color-primary-dark;
   }
 
   &__grid {
@@ -17,7 +17,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-mobile) {
   .dashboard-page__grid {
     grid-template-columns: 1fr;
   }

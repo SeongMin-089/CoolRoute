@@ -8,20 +8,20 @@
   min-height: 56px;
   padding: 18px 32px;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: $radius-full;
   appearance: none;
   font-weight: 600;
   font-size: 18px;
   line-height: 1;
   transition:
-    transform 180ms ease,
-    background 180ms ease,
-    border-color 180ms ease,
-    opacity 180ms ease;
+    transform $transition-fast,
+    background $transition-fast,
+    border-color $transition-fast,
+    opacity $transition-fast;
 
   &--primary {
     border-color: transparent;
-    background: linear-gradient(135deg, #12aeea 0%, $color-blue 100%);
+    background: linear-gradient(135deg, $color-sky 0%, $color-blue 100%);
     color: $color-white;
 
     &:hover {
