@@ -20,7 +20,7 @@
 
   &__logo {
     font-weight: 700;
-    color: $color-sky-700;
+    color: $color-sky;
   }
 
   &__actions {
@@ -31,8 +31,8 @@
 
   &__login {
     padding: 8px 14px;
-    border: 1px solid $color-sky-300;
+    border: 1px solid $color-sky;
     border-radius: 4px;
-    color: $color-sky-700;
+    color: $color-sky;
   }
 }

@@ -1,10 +1,77 @@
 @use './variables' as *;
 
+// ==============================
+// Container
+// ==============================
 @mixin container {
-  width: min(100% - 32px, $layout-max-width);
+  width: min(
+    100% - ($container-padding-desktop * 2),
+    $layout-max-width
+  );
   margin-inline: auto;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: min(
+      100% - ($container-padding-tablet * 2),
+      $layout-max-width
+    );
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: min(
+      100% - ($container-padding-mobile * 2),
+      $layout-max-width
+    );
+  }
 }
 
+// ==============================
+// Section spacing
+// ==============================
 @mixin section-spacing {
-  padding: 64px 0;
+  padding-block: $section-padding-desktop;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding-block: $section-padding-tablet;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding-block: $section-padding-mobile;
+  }
+}
+
+// ==============================
+// Flex helpers
+// ==============================
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ==============================
+// Text helpers
+// ==============================
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin keep-word {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+// ==============================
+// Responsive font
+// ==============================
+@mixin fluid-font($min, $preferred, $max) {
+  font-size: clamp($min, $preferred, $max);
 }

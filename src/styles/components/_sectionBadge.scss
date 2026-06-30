@@ -12,7 +12,7 @@
   line-height: 1;
 
   &--default {
-    border: 1px solid rgba($color-sky-300, 0.45);
+    border: 1px solid rgba($color-sky, 0.45);
     background: rgba($color-sky-50, 0.9);
     color: #0074a8;
   }
@@ -35,7 +35,7 @@
 }
 
 .section-badge--default .section-badge__dot {
-  background: $color-sky-700;
+  background: $color-sky;
 }
 
 .section-badge--glass .section-badge__dot {
