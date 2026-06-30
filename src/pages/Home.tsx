@@ -1,4 +1,6 @@
 import { useRef, useState } from "react"
+import type { CSSProperties } from "react"
+import { Link } from "react-router-dom"
 import Button from "../components/common/Button"
 
 type HeroSlideAlign = "left" | "right"
@@ -37,6 +39,39 @@ interface OperationCard {
   description: string
   badge: string
   code: string
+}
+
+interface CoreService {
+  id: string
+  title: string
+  description: string
+  image: string
+  to: string
+}
+
+interface FlowStep {
+  id: string
+  step: string
+  title: string
+  description: string
+  icon: string
+}
+
+interface EsgItem {
+  id: string
+  category: string
+  title: string
+  description: string
+  value: string
+  suffix?: string
+  detail: string
+}
+
+interface SystemGuide {
+  id: string
+  title: string
+  icon: string
+  items: string[]
 }
 
 const heroSlides: HeroSlide[] = [
@@ -158,15 +193,13 @@ const operationStats: OperationStat[] = [
 const operationCards: OperationCard[] = [
   {
     title: "수도권 메인 허브",
-    description:
-      "서울·경기 주요 점포 냉장 순환과 야간 회차 배송을 담당합니다.",
-    badge: "0~10도",
+    description: "서울·경기 주요 점포 냉장 순환과 야간 회차 배송을 담당합니다.",
+    badge: "0~10℃",
     code: "CUT-OFF 22:00",
   },
   {
     title: "충청 크로스도크",
-    description:
-      "중부권 간선 분기와 긴급 배차, 반품 회수 동선을 처리합니다.",
+    description: "중부권 간선 분기와 긴급 배차, 반품 회수 동선을 처리합니다.",
     badge: "상온 / 냉장",
     code: "RE-ROUTE 30M",
   },
@@ -174,15 +207,136 @@ const operationCards: OperationCard[] = [
     title: "영남 냉동 거점",
     description:
       "냉동 간편식, 아이스크림, 저온 상품의 보관과 분리 운영을 맡습니다.",
-    badge: "-18도",
+    badge: "-18℃↓",
     code: "TEMP LOG 24H",
   },
   {
     title: "호남·제주 연계망",
     description:
       "권역 일괄 물동과 도서 지역 출고 이력을 일일 리포트로 묶습니다.",
-    badge: "면세권",
+    badge: "멀티존",
     code: "REPORT D+0",
+  },
+]
+
+const coreServices: CoreService[] = [
+  {
+    id: "cold-chain",
+    title: "콜드체인 물류",
+    description: "냉장·냉동 상품을 전 구간 온도 이탈 없이 보관·출고합니다.",
+    image: "/home-service-coldchain.png",
+    to: "/business",
+  },
+  {
+    id: "store-logistics",
+    title: "편의점 물류",
+    description: "점포 발주부터 입고 검수까지 배송 흐름을 관리합니다.",
+    image: "/home-service-store.png",
+    to: "/business",
+  },
+  {
+    id: "operation-management",
+    title: "물류 운영 관리",
+    description: "재고·배송·장비 상태를 한 화면에서 통합 관리합니다.",
+    image: "/home-service-operation.png",
+    to: "/solution",
+  },
+]
+
+const flowSteps: FlowStep[] = [
+  {
+    id: "order",
+    step: "STEP 01",
+    title: "점포 발주",
+    description: "점주가 상품을 발주합니다.",
+    icon: "/home-flow-order.svg",
+  },
+  {
+    id: "approve",
+    step: "STEP 02",
+    title: "물류센터 승인",
+    description: "센터가 주문을 승인합니다.",
+    icon: "/home-flow-approve.svg",
+  },
+  {
+    id: "outbound",
+    step: "STEP 03",
+    title: "출고",
+    description: "적정 온도로 피킹·출고합니다.",
+    icon: "/home-flow-outbound.svg",
+  },
+  {
+    id: "delivery",
+    step: "STEP 04",
+    title: "배송",
+    description: "온도 유지하며 운송합니다.",
+    icon: "/home-flow-delivery.svg",
+  },
+  {
+    id: "inbound",
+    step: "STEP 05",
+    title: "점포 입고",
+    description: "검수 후 입고를 완료합니다.",
+    icon: "/home-flow-inbound.svg",
+  },
+  {
+    id: "disposal",
+    step: "STEP 06",
+    title: "폐기 관리",
+    description: "임박 상품을 폐기 처리합니다.",
+    icon: "/home-flow-disposal.svg",
+  },
+]
+
+const esgItems: EsgItem[] = [
+  {
+    id: "environment",
+    category: "ENVIRONMENT",
+    title: "탄소 저감 운송",
+    description: "배차 최적화와 운영 효율화로 운송 단계 탄소 배출을 줄입니다.",
+    value: "18",
+    suffix: "%",
+    detail: "배차 최적화 CO₂↓",
+  },
+  {
+    id: "social",
+    category: "SOCIAL",
+    title: "식품 폐기 절감",
+    description: "유통기한 임박 상품을 선별·재배치해 폐기 손실을 낮춥니다.",
+    value: "27",
+    suffix: "%",
+    detail: "폐기량 감축 · 연간",
+  },
+  {
+    id: "governance",
+    category: "GOVERNANCE",
+    title: "투명한 온도 기록",
+    description:
+      "전 구간 온도 이력을 회차별 리포트로 보관해 투명하게 공개합니다.",
+    value: "99.8",
+    suffix: "%",
+    detail: "온도 준수율 · 최근 12개월",
+  },
+]
+
+const systemGuides: SystemGuide[] = [
+  {
+    id: "store",
+    title: "점주",
+    icon: "/home-flow-order.svg",
+    items: ["상품 발주", "배송 상태 확인", "폐기 임박 상품 확인"],
+  },
+  {
+    id: "driver",
+    title: "배송기사",
+    icon: "/home-flow-delivery.svg",
+    items: ["금일 배송 목록 확인", "배송 완료", "미배송 처리"],
+  },
+  {
+    id: "center",
+    title: "물류센터",
+    icon: "/home-flow-outbound.svg",
+    items: ["재고", "발주 처리", "입고", "출고 내역 관리"],
   },
 ]
 
@@ -386,18 +540,21 @@ function Home() {
         </div>
       </section>
 
-      <section className="home-operation" aria-labelledby="home-operation-title">
+      <section
+        className="home-operation"
+        aria-labelledby="home-operation-title"
+      >
         <div className="home-operation__inner">
-          <div className="home-operation__content">
+          <div className="home-operation__header">
             <span className="home-operation__badge">
               <span className="home-operation__badge-dot" />
               도입 전 확인
             </span>
 
             <h2 id="home-operation-title">전국 콜드체인 운영 근거</h2>
+          </div>
 
-            <p>{operationIntro}</p>
-
+          <div className="home-operation__body">
             <div className="home-operation__summary">
               <p>{operationIntro}</p>
 
@@ -410,21 +567,198 @@ function Home() {
                 ))}
               </div>
             </div>
+            <div className="home-operation__cards">
+              {operationCards.map((card) => (
+                <article className="home-operation__card" key={card.title}>
+                  <div className="home-operation__card-head">
+                    <h3>{card.title}</h3>
+                    <span>{card.badge}</span>
+                  </div>
+
+                  <p>{card.description}</p>
+
+                  <strong>{card.code}</strong>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-services" aria-labelledby="home-services-title">
+        <div className="home-services__inner">
+          <div className="home-services__heading">
+            <span className="home-services__badge">
+              <span className="home-services__badge-dot" />
+              서비스 영역
+            </span>
+
+            <h2 id="home-services-title">핵심 서비스</h2>
+
+            <p>CoolRoute가 제공하는 주요 물류 서비스입니다.</p>
           </div>
 
-          <div className="home-operation__cards">
-            {operationCards.map((card) => (
-              <article className="home-operation__card" key={card.title}>
-                <div className="home-operation__card-head">
-                  <h3>{card.title}</h3>
-                  <span>{card.badge}</span>
+          <div className="home-services__grid">
+            {coreServices.map((service) => (
+              <article className="home-services__card" key={service.id}>
+                <div className="home-services__image-wrap">
+                  <img
+                    className="home-services__image"
+                    src={service.image}
+                    alt=""
+                    aria-hidden="true"
+                  />
                 </div>
 
-                <p>{card.description}</p>
+                <div className="home-services__body">
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
 
-                <strong>{card.code}</strong>
+                  <Link className="home-services__link" to={service.to}>
+                    자세히 보기
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-flow" aria-labelledby="home-flow-title">
+        <div className="home-flow__inner">
+          <div className="home-flow__heading">
+            <span className="home-flow__badge">
+              <span className="home-flow__badge-dot" />
+              발주부터 폐기까지
+            </span>
+
+            <h2 id="home-flow-title">물류 흐름</h2>
+
+            <p>점포 발주부터 폐기 관리까지, 하나의 흐름으로 이어집니다.</p>
+          </div>
+
+          <ol className="home-flow__list">
+            {flowSteps.map((item) => (
+              <li className="home-flow__item" key={item.id}>
+                <div className="home-flow__icon-wrap">
+                  <img
+                    className="home-flow__icon"
+                    src={item.icon}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <span className="home-flow__step">{item.step}</span>
+                <strong>{item.title}</strong>
+                <p>{item.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="home-esg" aria-labelledby="home-esg-title">
+        <div className="home-esg__inner">
+          <div className="home-esg__heading">
+            <span className="home-esg__badge">
+              <span className="home-esg__badge-dot" />
+              ESG 경영
+            </span>
+
+            <h2 id="home-esg-title">지속가능경영 (ESG)</h2>
+
+            <p>
+              콜드체인의 에너지·식품 폐기·안전 데이터를 관리해 환경과 사회적
+              책임을 함께 실현합니다.
+            </p>
+          </div>
+
+          <div className="home-esg__panel">
+            {esgItems.map((item) => (
+              <article className="home-esg__item" key={item.id}>
+                <span className="home-esg__category">{item.category}</span>
+
+                <h3>{item.title}</h3>
+
+                <p>{item.description}</p>
+
+                <div className="home-esg__metric">
+                  <strong>
+                    {item.value}
+                    {item.suffix && <span>{item.suffix}</span>}
+                  </strong>
+                  <small>{item.detail}</small>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-system" aria-labelledby="home-system-title">
+        <div className="home-system__inner">
+          <div className="home-system__content">
+            <span className="home-system__badge">
+              <span className="home-system__badge-dot" />
+              역할별 시스템
+            </span>
+
+            <h2 id="home-system-title">시스템 이용 안내</h2>
+
+            <p>역할에 맞는 물류 관리 시스템을 이용하세요.</p>
+
+            <Button to="/login" arrow>
+              로그인하기
+            </Button>
+          </div>
+
+          <div className="home-system__cards">
+            {systemGuides.map((guide) => (
+              <article className="home-system__card" key={guide.id}>
+                <div className="home-system__icon-wrap" aria-hidden="true">
+                  <span
+                    className="home-system__icon"
+                    style={
+                      { "--icon-url": `url(${guide.icon})` } as CSSProperties
+                    }
+                  />
+                </div>
+
+                <h3>{guide.title}</h3>
+
+                <ul>
+                  {guide.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-cta" aria-labelledby="home-cta-title">
+        <div className="home-cta__inner">
+          <h2 id="home-cta-title">
+            편의점 콜드체인 물류,
+            <br />
+            CoolRoute와 시작하세요
+          </h2>
+
+          <p>
+            센터 권역, 온도대, 배송 회차를 먼저 확인하고 우리 점포망에 맞는 도입
+            범위를 상담해 보세요.
+          </p>
+
+          <div className="home-cta__actions">
+            <Button to="/support" arrow>
+              도입 상담 요청
+            </Button>
+            <Button to="/login" variant="outline">
+              기존 고객 로그인
+            </Button>
           </div>
         </div>
       </section>
