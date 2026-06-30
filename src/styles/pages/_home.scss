@@ -11,6 +11,13 @@
   min-height: 620px;
   overflow: hidden;
   background: $color-navy;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+
+  &.is-dragging {
+    cursor: grabbing;
+  }
 }
 
 .home-hero__slides,
@@ -20,6 +27,9 @@
 }
 
 .home-hero__slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
   transition:
@@ -33,27 +43,14 @@
 }
 
 .home-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.home-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(5, 12, 24, 0.08) 0%,
-      rgba(5, 12, 24, 0.58) 58%,
-      rgba(0, 0, 0, 0.92) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.45) 0%,
-      rgba(0, 0, 0, 0.08) 45%,
-      rgba(0, 0, 0, 0.36) 100%
-    );
+  user-select: none;
+  pointer-events: none;
 }
 
 .home-hero__inner {
@@ -69,8 +66,28 @@
 }
 
 .home-hero__content {
-  grid-column: 2;
+  width: min(100%, 720px);
   transform: translateY(-24px);
+}
+
+.home-hero__slide--right .home-hero__content {
+  grid-column: 2;
+  justify-self: end;
+  text-align: right;
+}
+
+.home-hero__slide--left .home-hero__content {
+  grid-column: 1;
+  justify-self: start;
+  text-align: left;
+}
+
+.home-hero__slide--right .home-hero__eyebrow {
+  margin-left: auto;
+}
+
+.home-hero__slide--left .home-hero__eyebrow {
+  margin-right: auto;
 }
 
 .home-hero__eyebrow {
@@ -120,15 +137,44 @@
   gap: $space-12;
 }
 
+.home-hero__slide--right .home-hero__actions {
+  justify-content: flex-end;
+}
+
+.home-hero__slide--left .home-hero__actions {
+  justify-content: flex-start;
+}
+
+.home-hero__actions .button {
+  min-height: 48px;
+  padding: 0 $space-24;
+  font-size: 15px;
+  gap: $space-8;
+}
+
+.home-hero__actions .button__arrow {
+  font-size: 16px;
+  transform: translateY(-1px);
+}
+
 .home-hero__stats {
   position: absolute;
-  right: 0;
   bottom: $space-64;
   display: grid;
   grid-template-columns: repeat(4, auto);
   gap: $space-40;
   padding-top: $space-28;
   border-top: 1px solid rgba($color-white, 0.22);
+}
+
+.home-hero__slide--right .home-hero__stats {
+  right: 0;
+  left: auto;
+}
+
+.home-hero__slide--left .home-hero__stats {
+  left: 0;
+  right: auto;
 }
 
 .home-hero__stat {
@@ -147,33 +193,6 @@
     color: rgba($color-white, 0.68);
     font-size: 12px;
     white-space: nowrap;
-  }
-}
-
-.home-hero__controls {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  bottom: $space-24;
-  transform: translateX(-50%);
-  display: flex;
-  gap: $space-8;
-}
-
-.home-hero__indicator {
-  width: 8px;
-  height: 8px;
-  padding: 0;
-  border: 0;
-  border-radius: $radius-full;
-  background: rgba($color-white, 0.4);
-  transition:
-    width $transition-fast,
-    background $transition-fast;
-
-  &.is-active {
-    width: 28px;
-    background: $color-white;
   }
 }
 
@@ -201,14 +220,20 @@
     align-items: center;
   }
 
+  .home-hero__slide--right .home-hero__inner {
+    justify-content: flex-end;
+  }
+
+  .home-hero__slide--left .home-hero__inner {
+    justify-content: flex-start;
+  }
+
   .home-hero__content {
     max-width: 620px;
     transform: none;
   }
 
   .home-hero__stats {
-    left: 0;
-    right: auto;
     bottom: $space-48;
     grid-template-columns: repeat(4, auto);
     gap: $space-20;
