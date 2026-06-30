@@ -27,6 +27,18 @@ interface NetworkRegion {
   y: number
 }
 
+interface OperationStat {
+  value: string
+  label: string
+}
+
+interface OperationCard {
+  title: string
+  description: string
+  badge: string
+  code: string
+}
+
 const heroSlides: HeroSlide[] = [
   {
     id: "main-road",
@@ -71,8 +83,8 @@ const networkRegions: NetworkRegion[] = [
     title: "수도권 메인 허브",
     description: "서울·경기 점포 순환 · 야간 회차",
     mapLabel: "수도권",
-    x: 33,
-    y: 25,
+    x: 42,
+    y: 21,
   },
   {
     id: "gangwon",
@@ -80,8 +92,8 @@ const networkRegions: NetworkRegion[] = [
     title: "강원 거점",
     description: "강원권 간선 연계 · 정온 중계",
     mapLabel: "강원",
-    x: 58,
-    y: 17,
+    x: 51,
+    y: 16,
   },
   {
     id: "chungcheong",
@@ -89,7 +101,7 @@ const networkRegions: NetworkRegion[] = [
     title: "충청 크로스도크",
     description: "중부권 분기 · 긴급 배차",
     mapLabel: "충청",
-    x: 43,
+    x: 46,
     y: 42,
   },
   {
@@ -98,8 +110,8 @@ const networkRegions: NetworkRegion[] = [
     title: "영남 냉동 거점",
     description: "냉동 간편식 · 아이스크림 보관",
     mapLabel: "영남",
-    x: 64,
-    y: 55,
+    x: 63,
+    y: 51,
   },
   {
     id: "honam",
@@ -107,8 +119,8 @@ const networkRegions: NetworkRegion[] = [
     title: "호남 물류",
     description: "호남권 출고 · 권역 일괄 처리",
     mapLabel: "호남",
-    x: 35,
-    y: 62,
+    x: 38,
+    y: 63,
   },
   {
     id: "jeju",
@@ -116,8 +128,61 @@ const networkRegions: NetworkRegion[] = [
     title: "제주 연계망",
     description: "도서 지역 출고 이력 일일 리포트",
     mapLabel: "제주",
-    x: 40,
-    y: 90,
+    x: 34,
+    y: 89,
+  },
+]
+
+const operationIntro =
+  "도입 상담 전에 권역, 온도대, 마감 기준, 이상 대응 수준을 먼저 확인할 수 있도록 핵심 운영정보를 전면에 배치했습니다."
+
+const operationStats: OperationStat[] = [
+  {
+    value: "6개",
+    label: "권역 거점 센터",
+  },
+  {
+    value: "15분",
+    label: "온도 이탈 1차 확인",
+  },
+  {
+    value: "3온도",
+    label: "상온·냉장·냉동 분리",
+  },
+  {
+    value: "D+0",
+    label: "당일 회차 리포트",
+  },
+]
+
+const operationCards: OperationCard[] = [
+  {
+    title: "수도권 메인 허브",
+    description:
+      "서울·경기 주요 점포 냉장 순환과 야간 회차 배송을 담당합니다.",
+    badge: "0~10도",
+    code: "CUT-OFF 22:00",
+  },
+  {
+    title: "충청 크로스도크",
+    description:
+      "중부권 간선 분기와 긴급 배차, 반품 회수 동선을 처리합니다.",
+    badge: "상온 / 냉장",
+    code: "RE-ROUTE 30M",
+  },
+  {
+    title: "영남 냉동 거점",
+    description:
+      "냉동 간편식, 아이스크림, 저온 상품의 보관과 분리 운영을 맡습니다.",
+    badge: "-18도",
+    code: "TEMP LOG 24H",
+  },
+  {
+    title: "호남·제주 연계망",
+    description:
+      "권역 일괄 물동과 도서 지역 출고 이력을 일일 리포트로 묶습니다.",
+    badge: "면세권",
+    code: "REPORT D+0",
   },
 ]
 
@@ -317,6 +382,49 @@ function Home() {
                 )
               })}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-operation" aria-labelledby="home-operation-title">
+        <div className="home-operation__inner">
+          <div className="home-operation__content">
+            <span className="home-operation__badge">
+              <span className="home-operation__badge-dot" />
+              도입 전 확인
+            </span>
+
+            <h2 id="home-operation-title">전국 콜드체인 운영 근거</h2>
+
+            <p>{operationIntro}</p>
+
+            <div className="home-operation__summary">
+              <p>{operationIntro}</p>
+
+              <div className="home-operation__stats">
+                {operationStats.map((stat) => (
+                  <div className="home-operation__stat" key={stat.label}>
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="home-operation__cards">
+            {operationCards.map((card) => (
+              <article className="home-operation__card" key={card.title}>
+                <div className="home-operation__card-head">
+                  <h3>{card.title}</h3>
+                  <span>{card.badge}</span>
+                </div>
+
+                <p>{card.description}</p>
+
+                <strong>{card.code}</strong>
+              </article>
+            ))}
           </div>
         </div>
       </section>
