@@ -73,12 +73,11 @@
   }
 
   &__icon {
-    width: 13px;
-    height: 13px;
+    width: 16px;
+    height: 16px;
     flex: 0 0 auto;
-    border: 1.5px solid currentColor;
-    border-radius: $radius-xs;
-    opacity: 0.8;
+    display: block;
+    object-fit: contain;
   }
 
   &__label {
@@ -121,8 +120,8 @@
     }
 
     &__icon {
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
     }
   }
 }
