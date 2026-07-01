@@ -1,6 +1,8 @@
 export interface SubNavItem {
-  label: string;
-  id: string;
+  label: string
+  id: string
+  iconGray?: string
+  iconWhite?: string
 }
 
 export interface SubNavData {
@@ -14,15 +16,44 @@ export interface SubNavData {
 
 export const subNavItems: SubNavData = {
   company: [
-    { label: "회사 개요", id: "overview" },
-    { label: "경영이념", id: "philosophy" },
-    { label: "비전", id: "vision" },
-    { label: "조직안내", id: "organization" },
+    {
+      label: '회사 개요',
+      id: 'overview',
+      iconGray: '/overview-gray.svg',
+      iconWhite: '/overview-white.svg',
+    },
+    {
+      label: '경영이념',
+      id: 'philosophy',
+      iconGray: '/philosophy-gray.svg',
+      iconWhite: '/philosophy-white.svg',
+    },
+    {
+      label: '조직안내',
+      id: 'organization',
+      iconGray: '/organization-gray.svg',
+      iconWhite: '/organization-white.svg',
+    },
   ],
   business: [
-    { label: "콜드체인 물류", id: "cold-chain" },
-    { label: "편의점 물류", id: "convenience" },
-    { label: "물류 운영 관리", id: "operation" },
+    {
+      label: '콜드체인 물류',
+      id: 'cold-chain',
+      iconGray: '/cold-chain-gray.svg',
+      iconWhite: '/cold-chain-white.svg',
+    },
+    {
+      label: '편의점 물류',
+      id: 'convenience',
+      iconGray: '/convenience-gray.svg',
+      iconWhite: '/convenience-white.svg',
+    },
+    {
+      label: '물류 운영 관리',
+      id: 'operation',
+      iconGray: '/operation-gray.svg',
+      iconWhite: '/operation-white.svg',
+    },
   ],
   solution: [
     { label: "통합 관리 시스템", id: "integrated" },

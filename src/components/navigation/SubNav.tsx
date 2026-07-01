@@ -111,7 +111,14 @@ function SubNav({ items = [] }: SubNavProps) {
                   onClick={() => handleClick(item.id)}
                   aria-current={isActive ? 'true' : undefined}
                 >
-                  <span className="sub-nav__icon" aria-hidden="true" />
+                  {item.iconGray && item.iconWhite && (
+                    <img
+                      className="sub-nav__icon"
+                      src={isActive ? item.iconWhite : item.iconGray}
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  )}
                   <span className="sub-nav__label">{item.label}</span>
                 </button>
               </li>

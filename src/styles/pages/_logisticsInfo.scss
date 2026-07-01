@@ -1,2 +1,494 @@
-.page--logistics-info {
+/* 기본 래퍼 및 폰트 설정 */
+.logistics-info-page {
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  line-height: 1.5;
+}
+
+/* 1. Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-image: url("/header.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.hero-category {
+  font-size: 14px;
+  font-weight: 600;
+  color: #93c5fd;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.hero-desc {
+  font-size: 18px;
+  font-weight: 300;
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+/* 2. Sub Navigation */
+.sub-nav-container {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.sub-nav-list {
+  display: flex;
+  gap: 40px;
+}
+
+.sub-nav-item {
+  padding: 20px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6b7280; /* 🎯 평소(기본) 글자색은 차분한 회색으로 변경 */
+  text-decoration: none;
+  transition: color 0.2s ease; /* 부드럽게 색상이 바뀌는 효과 유지 */
+
+  // 🎯 마우스를 올렸을 때(Hover) 작동하는 코드 추가
+  &:hover {
+    color: #1e3a8a !important; /* 👈 마우스를 올렸을 때만 요청하신 색상 적용 */
+  }
+}
+
+.sub-nav-item:hover {
+  color: #111827;
+}
+.sub-nav-item.active {
+  color: #2563eb;
+}
+
+/* 공통 섹션 레이아웃 */
+.content-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-left: -10px;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.step-badge {
+  padding: 4px 12px;
+  background-color: #dbeafe;
+  color: #2563eb;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.step-badge2 {
+  padding: 4px 12px;
+  background-color: #dbeafe;
+  color: #2563eb;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 20px;
+}
+.step-badge3 {
+  padding: 4px 12px;
+  background-color: #dbeafe;
+  color: #2563eb;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 20px;
+}
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+.section-title2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.section-desc {
+  color: #6b7280;
+  font-size: 15px;
+  margin-left: 8px;
+}
+
+/* 3. 콜드체인이란? */
+.intro-section {
+  display: flex;
+  justify-content: center;
+}
+
+.intro-box {
+  background-color: #f0fdf4;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.intro-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.intro-text {
+  color: #4b5563;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* 4. 온도대 섹션 */
+.temp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.temp-card {
+  background: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+.badge.blue {
+  background-color: #eff6ff;
+  color: #3b82f6;
+}
+.badge.green {
+  background-color: #f0fdf4;
+  color: #22c55e;
+}
+.badge.orange {
+  background-color: #fff7ed;
+  color: #f97316;
+}
+
+.temp-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.temp-card p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* 5 & 6. ⭐️ 가로형 회색 배너 프레임 (시안과 1:1 완벽 동기화) */
+
+.inner-fluid-img {
+  width: 100%;
+  height: 362px; /* 시안 내부 트럭 이미지 높이 최적화 */
+  object-fit: cover;
+  border-radius: 12px; /* 내부 이미지 전용 라운딩 */
+  display: block;
+}
+
+.process-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  // 🎯 1. 위 트럭 이미지와의 간격을 확실하게 떨어뜨립니다.
+  margin-top: 60px; /* 👈 숫자를 키울수록 전체 프로세스 영역이 아래로 내려옵니다 */
+
+  // 🎯 2. 좌우 여백을 동기화하여 선이 삐져나가지 않게 패딩을 줍니다.
+  padding: 0 40px;
+}
+
+.process-line {
+  position: absolute;
+
+  // 🔥 핵심: top을 24px(아이콘 반지름 크기)로 설정하여
+  // 48px짜리 .step-icon의 수직 정중앙 좌표에 칼같이 물리도록 합니다.
+  top: 24px;
+  // 좌우 끝나는 지점을 패딩 값과 맞춰 선이 예쁘게 연결되도록 합니다.
+  left: 60px;
+  right: 60px;
+  height: 1px;
+  background-color: #e5e7eb;
+  z-index: 1; /* 아이콘 뒤로 숨기기 */
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff; /* 👈 중요: 선이 글자를 침범하지 않게 흰색 배경 적용 */
+  z-index: 2; /* 선보다 무조건 위로 오도록 */
+  padding: 0 8px;
+}
+
+.step-icon {
+  width: 48px; /* 👈 이 높이가 48px이므로 */
+  height: 48px; /* 👈 위에서 line의 top을 딱 절반인 24px로 잡은 것입니다! */
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: #2563eb; /* 체크 아이콘 색상을 선명하게 */
+  font-weight: bold;
+}
+
+.step-item h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.step-item p {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* 6. 상품 품질 관리 그리드 */
+.gray-banner-frame {
+  width: 1440px;
+}
+.quality-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.gray-banner-frame2 {
+  width: 1440px;
+  margin-left: -40px;
+}
+.gray-banner-frame3 {
+  width: 1440px;
+  margin-left: -40px;
+}
+.quality-card {
+  background-color: #f9fafb;
+  border: 1px solid #f3f4f6;
+  padding: 32px;
+  border-radius: 16px;
+}
+
+.quality-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.icon-green {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+.icon-gray {
+  background-color: #e5e7eb;
+  color: #4b5563;
+}
+
+.quality-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.quality-card p {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* 7. ⭐️ 관리 포인트 (시안 매칭 레이아웃) */
+.point-layout {
+  width: 1440px;
+  display: flex;
+  justify-content: center;
+  margin-left: -10px;
+  gap: 20px;
+  align-items: stretch; /* 좌우 높이 칼같이 맞춤 */
+}
+
+.point-image-area {
+  flex: 1;
+  width: 696px;
+  height: 500px;
+  border-radius: 16px;
+  overflow: hidden; /* 지게차 이미지 라운딩 탈출 방지 */
+  display: flex;
+}
+
+.side-fluid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin-left: 10px;
+}
+
+/* 우측 2x2 카드 그리드 */
+.point-grid {
+  padding: 2px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* 개별 카드 디자인 보정 */
+.point-card {
+  background-color: #ffffff;
+  border: 1px solid #ebd3e8f0; /* 투명도 높인 부드러운 외곽선 */
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 위아래 균등 배분 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.point-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  /* 시안 전용 파스텔 컬러 배지 */
+  .badge {
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    margin: 0;
+
+    &.green {
+      background-color: #dcfce7;
+      color: #16a34a;
+    }
+    &.blue {
+      background-color: #dbeafe;
+      color: #2563eb;
+    }
+    &.purple {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+    }
+    &.red {
+      background-color: #fee2e2;
+      color: #dc2626;
+    }
+  }
+}
+
+.point-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+  }
+
+  p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+    word-break: keep-all;
+  }
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .temp-grid,
+  .quality-grid,
+  .point-layout {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  .gray-banner-frame {
+    padding: 12px;
+  }
+  .inner-fluid-img {
+    height: 180px;
+  }
+  .point-image-area {
+    width: 100%;
+    height: 240px;
+  }
+  .point-grid {
+    grid-template-columns: 1fr;
+  }
 }
