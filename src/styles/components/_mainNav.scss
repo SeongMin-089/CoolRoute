@@ -1,4 +1,4 @@
-@use '../abstracts/variables' as *;
+@use "../abstracts/variables" as *;
 
 .main-nav {
   justify-self: center;
@@ -25,20 +25,20 @@
       color $transition-fast,
       background $transition-fast;
 
+    /* 1. 마우스를 올렸을 때 파란색 배경과 어울리는 텍스트 색상 지정 */
     &:hover {
-      color: $color-primary;
-      background: $color-primary-light;
+      color: #ffffff; /* 마우스 올리면 글자색 흰색으로 */
+      background: $color-primary; /* 아까 지웠던 파란색 배경으로 설정 */
     }
 
     &.active {
-      color: $color-primary;
-      background: $color-primary-light;
-      font-weight: 600;
+      font-weight: 600; /* 활성화 상태일 때는 글씨만 두껍게 유지 (배경X) */
     }
 
-    &:hover .main-nav__arrow,
-    &.active .main-nav__arrow {
+    /* 2. 마우스를 올렸을 때만 화살표가 스르륵 나타나도록 설정 (opacity 사용) */
+    &:hover .main-nav__arrow {
       opacity: 1;
+      visibility: visible;
     }
   }
 
@@ -46,7 +46,11 @@
     width: 10px;
     height: 10px;
     flex: 0 0 auto;
-    opacity: 0.75;
+    opacity: 0; /* 평소에는 투명하게 숨김 */
+    visibility: hidden; /* 평소에는 영역은 있되 안 보이게 설정 */
+    transition:
+      opacity $transition-fast,
+      visibility $transition-fast;
   }
 }
 

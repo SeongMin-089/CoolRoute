@@ -1,64 +1,64 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 interface FooterMenuItem {
-  label: string
-  path: string
+  label: string;
+  path: string;
 }
 
 interface FooterMenu {
-  title: string
-  items: FooterMenuItem[]
+  title: string;
+  items: FooterMenuItem[];
 }
 
 const footerMenus: FooterMenu[] = [
   {
-    title: '회사소개',
+    title: "회사소개",
     items: [
-      { label: '회사개요', path: '/company' },
-      { label: '경영이념', path: '/company' },
-      { label: '비전', path: '/company' },
-      { label: '조직안내', path: '/company' },
+      { label: "회사개요", path: "/company" },
+      { label: "경영이념", path: "/company" },
+      { label: "비전", path: "/company" },
+      { label: "조직안내", path: "/company" },
     ],
   },
   {
-    title: '사업분야',
+    title: "사업분야",
     items: [
-      { label: '콜드체인물류', path: '/business' },
-      { label: '편의점 물류', path: '/business' },
-      { label: '물류 운영 관리', path: '/business' },
+      { label: "콜드체인물류", path: "/business" },
+      { label: "편의점 물류", path: "/business" },
+      { label: "물류 운영 관리", path: "/business" },
     ],
   },
   {
-    title: '물류솔루션',
+    title: "물류솔루션",
     items: [
-      { label: '통합 관리 시스템', path: '/solution' },
-      { label: '역할별 관리 시스템', path: '/solution' },
-      { label: '온도 모니터링', path: '/solution' },
+      { label: "통합 관리 시스템", path: "/solution" },
+      { label: "역할별 관리 시스템", path: "/solution" },
+      { label: "온도 모니터링", path: "/solution" },
     ],
   },
   {
-    title: '물류정보',
+    title: "물류정보",
     items: [
-      { label: '콜드체인이란?', path: '/logistics-info' },
-      { label: '편의점 물류 흐름', path: '/logistics-info' },
-      { label: '상품 품질 관리', path: '/logistics-info' },
-      { label: '물류정보', path: '/logistics-info' },
+      { label: "콜드체인이란?", path: "/logistics-info" },
+      { label: "편의점 물류 흐름", path: "/logistics-info" },
+      { label: "상품 품질 관리", path: "/logistics-info" },
+      { label: "물류정보", path: "/logistics-info" },
     ],
   },
   {
-    title: '고객지원',
+    title: "고객지원",
     items: [
-      { label: '공지사항', path: '/support' },
-      { label: '자주 묻는 질문', path: '/support' },
-      { label: '이용안내', path: '/support' },
-      { label: '문의안내', path: '/support' },
+      { label: "공지사항", path: "/support" },
+      { label: "자주 묻는 질문", path: "/support" },
+      { label: "이용안내", path: "/support" },
+      { label: "문의안내", path: "/support" },
     ],
   },
   {
-    title: '인재채용',
-    items: [{ label: '인재채용', path: '/recruit' }],
+    title: "인재채용",
+    items: [{ label: "인재채용", path: "/recruit" }],
   },
-]
+];
 
 function Footer() {
   return (
@@ -160,7 +160,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
