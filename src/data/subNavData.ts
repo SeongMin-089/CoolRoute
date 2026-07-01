@@ -29,12 +29,6 @@ export const subNavItems: SubNavData = {
       iconWhite: '/philosophy-white.svg',
     },
     {
-      label: '비전',
-      id: 'vision',
-      iconGray: '/vision-gray.svg',
-      iconWhite: '/vision-white.svg',
-    },
-    {
       label: '조직안내',
       id: 'organization',
       iconGray: '/organization-gray.svg',
