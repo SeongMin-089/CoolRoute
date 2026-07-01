@@ -1,9 +1,9 @@
 interface PageHeroProps {
-  title: string
-  description?: string
+  title: string;
+  description?: string;
 }
 
-function PageHero({ title, description = 'Placeholder text' }: PageHeroProps) {
+function PageHero({ title, description = "Placeholder text" }: PageHeroProps) {
   return (
     <section className="page-hero">
       <div className="page-hero__inner">
@@ -11,7 +11,7 @@ function PageHero({ title, description = 'Placeholder text' }: PageHeroProps) {
         <p>{description}</p>
       </div>
     </section>
-  )
+  );
 }
 
-export default PageHero
+export default PageHero;
