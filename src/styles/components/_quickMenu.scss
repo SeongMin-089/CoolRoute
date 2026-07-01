@@ -1,0 +1,79 @@
+@use '../abstracts/variables' as *;
+
+.quick-menu {
+  position: fixed;
+  right: 32px;
+  bottom: 80px;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: $space-16;
+}
+
+.quick-menu__button {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border: 1px solid $color-border;
+  border-radius: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-white;
+  box-shadow: $shadow-md;
+  transition:
+    background $transition-fast,
+    border-color $transition-fast,
+    box-shadow $transition-fast,
+    transform $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    border-color: transparent;
+    background: linear-gradient(135deg, $color-sky 0%, $color-primary 100%);
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+.quick-menu__icon {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  display: block;
+  transition:
+    opacity $transition-fast,
+    visibility $transition-fast;
+}
+
+.quick-menu__icon--active,
+.quick-menu__button:hover .quick-menu__icon--default,
+.quick-menu__button:focus-visible .quick-menu__icon--default {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.quick-menu__button:hover .quick-menu__icon--active,
+.quick-menu__button:focus-visible .quick-menu__icon--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .quick-menu {
+    right: 16px;
+    bottom: 56px;
+    gap: $space-10;
+  }
+
+  .quick-menu__button {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-lg;
+  }
+
+  .quick-menu__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
