@@ -75,3 +75,13 @@
 @mixin fluid-font($min, $preferred, $max) {
   font-size: clamp($min, $preferred, $max);
 }
+
+// ==============================
+// Card surface
+// ==============================
+@mixin card-box {
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-white;
+  box-shadow: $shadow-sm;
+}
