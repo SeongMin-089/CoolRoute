@@ -30,7 +30,7 @@ function PageHero({
         )}
       </div>
     </section>
-  )
+  );
 }
 
-export default PageHero
+export default PageHero;

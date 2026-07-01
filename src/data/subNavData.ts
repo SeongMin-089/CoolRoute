@@ -6,12 +6,12 @@ export interface SubNavItem {
 }
 
 export interface SubNavData {
-  company: SubNavItem[]
-  business: SubNavItem[]
-  solution: SubNavItem[]
-  logisticsInfo: SubNavItem[]
-  support: SubNavItem[]
-  recruit: SubNavItem[]
+  company: SubNavItem[];
+  business: SubNavItem[];
+  solution: SubNavItem[];
+  logisticsInfo: SubNavItem[];
+  support: SubNavItem[];
+  recruit: SubNavItem[];
 }
 
 export const subNavItems: SubNavData = {
@@ -56,27 +56,27 @@ export const subNavItems: SubNavData = {
     },
   ],
   solution: [
-    { label: '통합 관리 시스템', id: 'integrated' },
-    { label: '역할별 관리 시스템', id: 'role-system' },
-    { label: '온도 모니터링', id: 'temperature' },
+    { label: "통합 관리 시스템", id: "integrated" },
+    { label: "역할별 관리 시스템", id: "role-system" },
+    { label: "온도 모니터링", id: "temperature" },
   ],
   logisticsInfo: [
-    { label: '콜드체인이란?', id: 'definition' },
-    { label: '편의점 물류 흐름', id: 'flow' },
-    { label: '상품 품질 관리', id: 'quality' },
-    { label: '콜드체인 관리 포인트', id: 'point' },
-    { label: '온도 이탈 대응', id: 'response' },
+    { label: "콜드체인이란?", id: "definition" },
+    { label: "편의점 물류 흐름", id: "flow" },
+    { label: "상품 품질 관리", id: "quality" },
+    { label: "콜드체인 관리 포인트", id: "point" },
+    { label: "온도 이탈 대응", id: "response" },
   ],
   support: [
-    { label: '공지사항', id: 'notice' },
-    { label: '자주 묻는 질문', id: 'faq' },
-    { label: '이용안내', id: 'guide' },
-    { label: '문의안내', id: 'contact' },
+    { label: "공지사항", id: "notice" },
+    { label: "자주 묻는 질문", id: "faq" },
+    { label: "이용안내", id: "guide" },
+    { label: "문의안내", id: "contact" },
   ],
   recruit: [
-    { label: '인재상', id: 'talent' },
-    { label: '직무소개', id: 'job' },
-    { label: '복지', id: 'benefit' },
-    { label: '채용공고', id: 'posting' },
+    { label: "인재상", id: "talent" },
+    { label: "직무소개", id: "job" },
+    { label: "복지", id: "benefit" },
+    { label: "채용공고", id: "posting" },
   ],
-}
+};

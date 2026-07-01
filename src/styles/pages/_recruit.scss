@@ -1,2 +1,461 @@
+@use "../abstracts/variables" as *;
+
 .page--recruit {
+  background: #f8fafc;
+
+  .page-hero {
+    max-width: 1920px;
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.38), rgba(15, 23, 42, 0.38)),
+      url(../../../public/recruit-hero-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .page-hero__inner {
+      width: min(100% - 40px, 1440px);
+
+      h1 {
+        font-size: 60px;
+        font-weight: 500;
+        color: $color-white;
+      }
+
+      p {
+        color: $color-white;
+        font-size: 18px;
+        white-space: pre-line;
+      }
+    }
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+
+    &::before {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+
+      font-size: 12px;
+      font-weight: 600;
+      color: #1976d2;
+      background: #e8f5ff;
+      border: 1px solid #bde3ff;
+    }
+  }
+
+  #talent .section-title::before {
+    content: "• Talent";
+  }
+
+  #job .section-title::before {
+    content: "• Jobs";
+  }
+
+  #benefit .section-title::before {
+    content: "• Benefit";
+  }
+
+  #posting .section-title::before {
+    content: "• Openings";
+  }
+
+  .recruit-content {
+    width: min(100% - 40px, 1440px);
+    margin: 0 auto;
+    padding: 80px 0 120px;
+  }
+
+  .section-block {
+    margin-bottom: 120px;
+    scroll-margin-top: 120px;
+  }
+
+  .section-block__content {
+    margin-top: 28px;
+  }
+
+  .recruit-section-desc {
+    margin-bottom: 24px;
+    font-size: 15px;
+    color: #64748b;
+  }
+
+  .talent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 36px;
+  }
+
+  .talent-card {
+    min-height: 230px;
+    padding: 32px;
+    border: 1px solid #e5eaf1;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+    transition: 0.25s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    h3 {
+      margin-top: 22px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    p {
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #475569;
+    }
+  }
+
+  .talent-card__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--green {
+      background: #dcfce7;
+    }
+
+    &--blue {
+      background: #dbeafe;
+    }
+
+    &--orange {
+      background: #ffedd5;
+    }
+  }
+
+  .talent-card__tag {
+    display: inline-flex;
+    margin-top: 20px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+
+    &--green {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    &--blue {
+      background: #dbeafe;
+      color: #2563eb;
+    }
+
+    &--orange {
+      background: #ffedd5;
+      color: #ea580c;
+    }
+  }
+
+  .recruit-image-card {
+    position: relative;
+    overflow: hidden;
+    height: 360px;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.05),
+        rgba(15, 23, 42, 0.38)
+      );
+    }
+
+    span {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      z-index: 1;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(15, 23, 42, 0.72);
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+      }
+    }
+  }
+
+  .job-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 26px 0 34px;
+    border-top: 1px solid #dbe2ea;
+  }
+
+  .job-item {
+    span {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #64748b;
+    }
+  }
+
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 36px;
+  }
+
+  .benefit-card {
+    min-height: 170px;
+    padding: 28px;
+    border: 1px solid #e5eaf1;
+    border-radius: 14px;
+    background: #fff;
+
+    h3 {
+      margin-top: 18px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #64748b;
+    }
+  }
+
+  .benefit-card__icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dcfce7;
+  }
+
+  .posting-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .posting-card {
+    position: relative;
+    padding: 30px;
+    border: 1px solid #e5eaf1;
+    border-radius: 14px;
+    background: #fff;
+
+    h3 {
+      margin-top: 12px;
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #475569;
+    }
+
+    ul {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      padding: 0;
+      list-style: none;
+
+      li {
+        font-size: 13px;
+        color: #64748b;
+      }
+    }
+
+    button {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      height: 40px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      background: #1d7ed8;
+      cursor: pointer;
+    }
+  }
+
+  .posting-card__field,
+  .posting-card__type {
+    display: inline-flex;
+    margin-right: 8px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .posting-card__field {
+    color: #2563eb;
+  }
+
+  .posting-card__type {
+    color: #16a34a;
+  }
+
+  .posting-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-top: 70px;
+
+    h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    p {
+      margin-top: 12px;
+      font-size: 15px;
+      color: #64748b;
+    }
+
+    button {
+      flex-shrink: 0;
+      height: 46px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      background: #1d7ed8;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .page--recruit {
+      .talent-grid,
+      .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .job-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .posting-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recruit-image-card {
+        height: 300px;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page--recruit {
+      .recruit-content {
+        width: min(100% - 32px, 1440px);
+        padding: 56px 0 90px;
+      }
+
+      .section-block {
+        margin-bottom: 80px;
+      }
+
+      .talent-grid,
+      .benefit-grid,
+      .job-grid,
+      .posting-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .posting-card {
+        button {
+          position: static;
+          width: 100%;
+          margin-top: 24px;
+        }
+      }
+
+      .posting-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+
+        button {
+          width: 100%;
+        }
+      }
+
+      .recruit-image-card {
+        height: 240px;
+      }
+    }
+  }
 }
