@@ -1,12 +1,11 @@
-import React from "react";
-import "../styles/pages/_LogisticsInfo.scss";
+import "../styles/pages/_LogisticsInfo.scss"
 
 const subNavItems = [
   { id: "temp", label: "상품을 나누는 온도" },
   { id: "cvs", label: "편의점 물류 관리" },
   { id: "quality", label: "상품 품질 관리" },
   { id: "point", label: "콜드 체인 관리 포인트" },
-];
+]
 
 function LogisticsInfo() {
   return (
@@ -28,7 +27,7 @@ function LogisticsInfo() {
       {/* 2. Sub Navigation */}
       <nav className="sub-nav-container">
         <div className="sub-nav-list">
-          {subNavItems.map((item, index) => (
+          {subNavItems.map((item) => (
             <a key={item.id} href={`#${item.id}`} className="sub-nav-item">
               {item.label}
             </a>
@@ -237,7 +236,7 @@ function LogisticsInfo() {
         </section>
       </div>
     </div>
-  );
+  )
 }
 
-export default LogisticsInfo;
+export default LogisticsInfo
