@@ -13,10 +13,10 @@
 .business-section__inner {
   @include container;
   padding: $space-120 0;
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1fr);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: clamp($space-48, 5vw, $space-96);
+  gap: $space-80;
 }
 
 .business-section--reverse .business-section__content {
@@ -29,7 +29,8 @@
 
 .business-section__content {
   min-width: 0;
-  max-width: 620px;
+  width: 420px;
+  flex: 0 0 420px;
 }
 
 .business-section__badge {
@@ -53,6 +54,7 @@
   font-size: 18px;
   line-height: 1.7;
   letter-spacing: -0.02em;
+  white-space: pre-line;
   @include keep-word;
 }
 
@@ -111,6 +113,8 @@
 
 .business-section__media {
   min-width: 0;
+  width: 720px;
+  flex: 0 0 720px;
 }
 
 .business-section__media img {
@@ -118,20 +122,30 @@
   height: auto;
   border-radius: $radius-lg;
   display: block;
-  object-fit: contain;
 }
 
 @media (max-width: $breakpoint-desktop) {
   .business-section__inner {
-    grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
     gap: $space-64;
   }
+
+  .business-section__content {
+    width: 400px;
+    flex-basis: 400px;
+  }
+
+  .business-section__media {
+    width: 620px;
+    flex-basis: 620px;
+  }
+
 }
 
 @media (max-width: $breakpoint-tablet) {
   .business-section__inner {
     padding: $space-96 0;
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
     gap: $space-56;
   }
 
@@ -141,8 +155,16 @@
   }
 
   .business-section__content {
+    width: 100%;
+    flex-basis: auto;
     max-width: 720px;
   }
+
+  .business-section__media {
+    width: 100%;
+    flex-basis: auto;
+  }
+
 }
 
 @media (max-width: $breakpoint-mobile) {
@@ -156,6 +178,11 @@
 
   .business-section__content > p {
     font-size: 16px;
+  }
+
+  .business-section__content,
+  .business-section__media {
+    max-width: 100%;
   }
 
   .business-section__keywords span {
