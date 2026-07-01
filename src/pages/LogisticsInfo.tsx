@@ -1,4 +1,4 @@
-import "../styles/pages/_LogisticsInfo.scss"
+import "../styles/pages/_logisticsInfo.scss"
 
 const subNavItems = [
   { id: "temp", label: "상품을 나누는 온도" },
