@@ -1,15 +1,15 @@
-import { Link, NavLink } from 'react-router-dom'
-import { navItems } from '../../data/navData'
-import { subNavItems } from '../../data/subNavData'
+import { Link, NavLink } from "react-router-dom";
+import { navItems } from "../../data/navData";
+import { subNavItems } from "../../data/subNavData";
 
 const subNavKeyByPath = {
-  '/company': 'company',
-  '/business': 'business',
-  '/solution': 'solution',
-  '/logistics-info': 'logisticsInfo',
-  '/support': 'support',
-  '/recruit': 'recruit',
-} as const
+  "/company": "company",
+  "/business": "business",
+  "/solution": "solution",
+  "/logistics-info": "logisticsInfo",
+  "/support": "support",
+  "/recruit": "recruit",
+} as const;
 
 function MainNav() {
   return (
@@ -17,16 +17,16 @@ function MainNav() {
       <ul className="main-nav__list">
         {navItems.map((item) => {
           const subNavKey =
-            subNavKeyByPath[item.path as keyof typeof subNavKeyByPath]
-          const dropdownItems = subNavKey ? subNavItems[subNavKey] : []
-          const hasDropdown = dropdownItems.length > 0
+            subNavKeyByPath[item.path as keyof typeof subNavKeyByPath];
+          const dropdownItems = subNavKey ? subNavItems[subNavKey] : [];
+          const hasDropdown = dropdownItems.length > 0;
 
           return (
             <li key={item.path} className="main-nav__item">
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `main-nav__link${isActive ? ' is-active' : ''}`
+                  `main-nav__link${isActive ? " is-active" : ""}`
                 }
               >
                 <span>{item.label}</span>
@@ -54,11 +54,11 @@ function MainNav() {
                 </ul>
               )}
             </li>
-          )
+          );
         })}
       </ul>
     </nav>
-  )
+  );
 }
 
-export default MainNav
+export default MainNav;
