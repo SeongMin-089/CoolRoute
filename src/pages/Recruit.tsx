@@ -122,8 +122,10 @@ function Recruit() {
   return (
     <div className="page page--recruit">
       <PageHero
+        eyebrow="홈 › 인재채용"
         title="인재채용"
         description="콜드체인의 신선함을 끝까지 지키는 사람들. CoolRoute와 함께 성장할 인재를 찾습니다."
+        backgroundImage="/recruit-hero-bg.png"
       />
 
       <SubNav items={subNavItems.recruit} />
@@ -156,7 +158,7 @@ function Recruit() {
           </div>
 
           <div className="recruit-image-card">
-            <img src="/recruit-talent.png" alt="인재상 이미지" />
+            <img src="/recruit-section-talent-img.png" alt="인재상 이미지" />
             <span>데이터로 함께 판단하는 팀 문화</span>
           </div>
         </SectionBlock>
@@ -173,7 +175,7 @@ function Recruit() {
           </div>
 
           <div className="recruit-image-card">
-            <img src="/recruit-job.png" alt="직무 소개 이미지" />
+            <img src="/recruit-section-jobs-img.png" alt="직무 소개 이미지" />
             <span>현장에서 품질을 지키는 사람들</span>
           </div>
         </SectionBlock>
@@ -190,7 +192,7 @@ function Recruit() {
           </div>
 
           <div className="recruit-image-card">
-            <img src="/recruit-benefit.png" alt="복지 이미지" />
+            <img src="/recruit-section-benefit-img.png" alt="복지 이미지" />
             <span>팀원들의 성장을 지지하는 사람들</span>
           </div>
         </SectionBlock>

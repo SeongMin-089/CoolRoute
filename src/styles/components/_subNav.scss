@@ -1,5 +1,5 @@
-@use '../abstracts/variables' as *;
-@use '../abstracts/mixins' as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 .sub-nav {
   position: sticky;
@@ -24,7 +24,7 @@
     overflow-x: auto;
     padding: 5px;
     border: 1px solid $color-border;
-    border-radius: $radius-full;
+    border-radius: $radius-md;
     background: rgba($color-white, 0.94);
     box-shadow: $shadow-sm;
     backdrop-filter: blur(16px);
