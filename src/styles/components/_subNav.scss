@@ -20,9 +20,9 @@
     max-width: 100%;
     display: flex;
     align-items: center;
-    gap: $space-4;
+    gap: 3px;
     overflow-x: auto;
-    padding: $space-6;
+    padding: 5px;
     border: 1px solid $color-border;
     border-radius: $radius-full;
     background: rgba($color-white, 0.94);
@@ -36,11 +36,11 @@
   }
 
   &__button {
-    min-width: 128px;
-    height: 44px;
-    padding: 0 18px;
+    min-width: 160px;
+    height: 52px;
+    padding: 0 22px;
     border: 0;
-    border-radius: $radius-md;
+    border-radius: $radius-full;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -98,13 +98,14 @@
     &__list {
       width: 100%;
       justify-content: flex-start;
-      border-radius: $radius-xl;
+      padding: 5px;
+      border-radius: $radius-full;
     }
 
     &__button {
-      min-width: 116px;
-      height: 40px;
-      padding: 0 14px;
+      min-width: 136px;
+      height: 48px;
+      padding: 0 16px;
       font-size: 12px;
     }
   }
@@ -113,8 +114,8 @@
 @media (max-width: $breakpoint-mobile) {
   .sub-nav {
     &__button {
-      min-width: 108px;
-      height: 38px;
+      min-width: 118px;
+      height: 44px;
       padding: 0 $space-12;
       font-size: 12px;
     }
