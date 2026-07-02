@@ -1,7 +1,7 @@
-import PageHero from '../components/common/PageHero'
-import SectionBlock from '../components/common/SectionBlock'
-import SubNav from '../components/navigation/SubNav'
-import { subNavItems } from '../data/subNavData'
+import PageHero from "../components/common/PageHero";
+import SectionBlock from "../components/common/SectionBlock";
+import SubNav from "../components/navigation/SubNav";
+import { subNavItems } from "../data/subNavData";
 
 function Support() {
   return (
@@ -12,7 +12,7 @@ function Support() {
         <SectionBlock key={item.id} id={item.id} title={item.label} />
       ))}
     </div>
-  )
+  );
 }
 
-export default Support
+export default Support;
