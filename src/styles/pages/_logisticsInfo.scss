@@ -74,28 +74,36 @@
 
 .sub-nav-list {
   display: flex;
-  gap: 40px;
+  gap: 16px; // 🎯 마디마디 배경이 생기므로 gap을 조금 줄여서 배치하면 예쁩니다 (기존 40px에서 조정)
+  padding: 12px 0; // 🎯 컨테이너 자체에 위아래 여백을 주어 버튼들이 정렬되게 합니다.
 }
 
 .sub-nav-item {
-  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px; // 🎯 마우스 올렸을 때 감싸는 파란색 배경의 상하좌우 여백
   font-size: 15px;
   font-weight: 600;
-  color: #6b7280; /* 🎯 평소(기본) 글자색은 차분한 회색으로 변경 */
   text-decoration: none;
-  transition: color 0.2s ease; /* 부드럽게 색상이 바뀌는 효과 유지 */
+  border-radius: 6px; // 🎯 버튼 모서리를 둥글게 깎아줍니다.
+  transition: all 0.2s ease; // 배경색과 글자색이 부드럽게 바뀌도록 변경
 
-  // 🎯 마우스를 올렸을 때(Hover) 작동하는 코드 추가
+  // 1️⃣ [기본 상태] 파란색을 지우고 깔끔한 검은색 텍스트로 변경
+  color: #1a1a1a;
+  background-color: transparent;
+
+  // 2️⃣ [마우스를 올렸을 때 (Hover)] 파란색 배경 + 흰색 텍스트 적용
   &:hover {
-    color: #1e3a8a !important; /* 👈 마우스를 올렸을 때만 요청하신 색상 적용 */
+    background-color: #2563eb; // 👈 쿨루트 브랜드 컬러와 매칭되는 선명한 파란색
+    color: #ffffff !important; // 👈 파란 배경에서 글자가 잘 보이도록 흰색 강제 적용
   }
-}
 
-.sub-nav-item:hover {
-  color: #111827;
-}
-.sub-nav-item.active {
-  color: #2563eb;
+  // 3️⃣ [현재 활성화된 페이지 상태 (Active)] 필요할 경우 적용
+  &.active {
+    background-color: #eff6ff; // 아주 연한 파란색 배경
+    color: #2563eb; // 파란색 글씨
+  }
 }
 
 /* 공통 섹션 레이아웃 */
@@ -107,7 +115,22 @@
   flex-direction: column;
   gap: 120px;
 }
-
+.section-header2 {
+  display: flex;
+  align-items: center;
+  margin-left: -10px;
+  gap: 12px;
+  margin-bottom: 32px;
+  margin-left: 8px; /* 좌측 여백을 제거하여 배지와 제목이 붙도록 조정 */
+}
+.section-header1 {
+  display: flex;
+  align-items: center;
+  margin-left: -10px;
+  gap: 12px;
+  margin-bottom: 32px;
+  margin-left: 10px; /* 좌측 여백을 제거하여 배지와 제목이 붙도록 조정 */
+}
 .section-header {
   display: flex;
   align-items: center;
@@ -311,7 +334,10 @@
 .quality-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 30px;
+  width: 95%;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 .gray-banner-frame2 {
   width: 1440px;
@@ -362,21 +388,24 @@
 
 /* 7. ⭐️ 관리 포인트 (시안 매칭 레이아웃) */
 .point-layout {
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   display: flex;
   justify-content: center;
-  margin-left: -10px;
+  align-items: stretch; /* 🎯 좌우 높이를 끝까지 밀어붙여 일치시킴 */
   gap: 20px;
-  align-items: stretch; /* 좌우 높이 칼같이 맞춤 */
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
+/* 🚛 좌측: 콜드체인 지게차 이미지 영역 */
 .point-image-area {
   flex: 1;
-  width: 696px;
-  height: 500px;
+  width: 50%;
   border-radius: 16px;
-  overflow: hidden; /* 지게차 이미지 라운딩 탈출 방지 */
+  overflow: hidden;
   display: flex;
+  transform: translateY(15px);
 }
 
 .side-fluid-img {
@@ -384,28 +413,46 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  margin-left: 10px;
 }
 
-/* 우측 2x2 카드 그리드 */
+/* 🗂️ 우측: 2x2 카드 그리드 전체 영역 */
 .point-grid {
-  padding: 2px;
   flex: 1;
+  width: 50%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  box-sizing: border-box;
+
+  // 🎯 [여기 수정!] 카드가 밑으로 조금 더 늘어나도록 그리드 자체에 최소 높이를 강제 부여합니다.
+  // 💡 만약 적용 후에도 미세하게 더 늘리고 싶다면 이 숫자를 530px, 540px 등으로 조금씩 키워보세요!
+  min-height: 520px;
 }
 
 /* 개별 카드 디자인 보정 */
 .point-card {
   background-color: #ffffff;
-  border: 1px solid #ebd3e8f0; /* 투명도 높인 부드러운 외곽선 */
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
   padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* 위아래 균등 배분 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100%; /* 늘어난 그리드 높이를 카드가 100% 꽉 채우도록 설정 */
+
+  /* 1. 기본 그림자 설정 및 부모 전환 효과 (추가) */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  /* 2. 마우스를 올렸을 때 공중에 뜨는 효과 (추가) */
+  &:hover {
+    transform: translateY(-8px); /* 위로 8px 띄우기 */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08); /* 그림자 확장 */
+  }
 }
 
 .point-card-header {
@@ -469,8 +516,44 @@
     word-break: keep-all;
   }
 }
+.main-nav__item {
+  display: flex;
+  align-items: center;
 
+  .main-nav__link {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 6px; // 🎯 마우스 올렸을 때 배경을 둥글게 하기 위함
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease; // 부드러운 전환 효과
+
+    // 1️⃣ [기본 상태 & 활성화 상태] 파란색을 지우고 기본 검은색으로 고정
+    &,
+    &.is-active {
+      color: #1a1a1a; // 기존 파란색 글씨를 검은색으로 변경
+      background-color: transparent; // 기존 파란 배경이 있었다면 투명하게 초기화
+    }
+
+    // 2️⃣ [마우스를 올렸을 때 (Hover)] 파란색 배경 + 흰색 텍스트 띄우기
+    &:hover {
+      background-color: #326ef1; // 👈 마우스 올렸을 때만 선명한 파란색 배경
+      color: #ffffff !important; // 👈 글자색은 흰색으로 변경
+
+      // 만약 텍스트 옆에 화살표(v) 같은 아이콘이 있다면 흰색으로 함께 변경
+      svg,
+      i {
+        stroke: #ffffff;
+        fill: #ffffff;
+      }
+    }
+  }
+}
 /* 모바일 대응 */
+/* 기존의 잘못 매칭된 코드를 지우고, 맨 아래 모바일 미디어 쿼리를 아래처럼 정돈합니다 */
+
 @media (max-width: 768px) {
   .temp-grid,
   .quality-grid,
@@ -484,11 +567,14 @@
   .inner-fluid-img {
     height: 180px;
   }
+
+  /* 🎯 반드시 이 @media { ... } 안쪽에 위치해야 모바일에서만 작동합니다! */
   .point-image-area {
     width: 100%;
-    height: 240px;
+    height: 240px; /* 모바일 전용 높이 */
   }
+
   .point-grid {
     grid-template-columns: 1fr;
   }
-}
+} // 👈 미디어 쿼리가 여기서 깔끔하게 닫혀야 합니다.

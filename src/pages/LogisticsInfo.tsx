@@ -1,11 +1,11 @@
-import "../styles/pages/_logisticsInfo.scss"
+import "../styles/pages/_logisticsInfo.scss";
 
 const subNavItems = [
   { id: "temp", label: "상품을 나누는 온도" },
   { id: "cvs", label: "편의점 물류 관리" },
   { id: "quality", label: "상품 품질 관리" },
   { id: "point", label: "콜드 체인 관리 포인트" },
-]
+];
 
 function LogisticsInfo() {
   return (
@@ -54,7 +54,7 @@ function LogisticsInfo() {
 
         {/* 4. 상품을 나누는 3가지 온도대 */}
         <section id="temp">
-          <div className="section-header">
+          <div className="section-header1">
             <span className="step-badge">Step 1</span>
             <h2 className="section-title">상품을 나누는 3가지 온도대</h2>
           </div>
@@ -171,7 +171,7 @@ function LogisticsInfo() {
 
         {/* 7. 콜드 체인 관리 포인트 */}
         <section id="point">
-          <div className="section-header">
+          <div className="section-header2">
             <span className="step-badge">Step 4</span>
             <h2 className="section-title">콜드 체인 관리 포인트</h2>
             <p className="section-desc">
@@ -236,7 +236,7 @@ function LogisticsInfo() {
         </section>
       </div>
     </div>
-  )
+  );
 }
 
-export default LogisticsInfo
+export default LogisticsInfo;
