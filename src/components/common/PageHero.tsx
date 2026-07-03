@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import type { CSSProperties } from 'react'
 
 interface PageHeroProps {
   title: string
@@ -30,7 +31,7 @@ function PageHero({ title, description, image }: PageHeroProps) {
         {description && <p>{description}</p>}
       </div>
     </section>
-  )
+  );
 }
 
-export default PageHero
+export default PageHero;
