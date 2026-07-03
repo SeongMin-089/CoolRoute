@@ -1,19 +1,22 @@
 import { Link } from 'react-router-dom'
-import type { CSSProperties } from 'react'
 
 interface PageHeroProps {
+  eyebrow?: string
   title: string
   description?: string
   image?: string
+  backgroundImage?: string
 }
 
-function PageHero({ title, description, image }: PageHeroProps) {
+function PageHero({ title, description, image, backgroundImage }: PageHeroProps) {
+  const heroImage = backgroundImage ?? image
+
   return (
-    <section className={`page-hero${image ? ' page-hero--image' : ''}`}>
-      {image && (
+    <section className={`page-hero${heroImage ? ' page-hero--image' : ''}`}>
+      {heroImage && (
         <img
           className="page-hero__image"
-          src={image}
+          src={heroImage}
           alt=""
           aria-hidden="true"
         />
