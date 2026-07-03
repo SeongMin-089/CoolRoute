@@ -12,6 +12,7 @@ function Solution() {
       <PageHero
         title="물류솔루션"
         description="발주·배송·재고·입출고·폐기를 한 화면에서 관리하는 통합 물류 솔루션입니다. 실제 업무 처리는 로그인 후 역할별 대시보드에서 진행됩니다."
+        image="/images/control-room.png"
       />
 
       <SubNav items={subNavItems.solution} />
