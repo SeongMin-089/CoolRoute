@@ -2,83 +2,87 @@
 @use "../abstracts/mixins" as *;
 
 .page-hero {
-  background: $color-primary-light;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, $color-navy 0%, #1c2f55 60%, #173b9f 100%);
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+  }
+
+  &--image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba($color-navy, 0.88) 0%,
+      rgba($color-navy, 0.55) 55%,
+      rgba($color-navy, 0.35) 100%
+    );
+  }
 
   &__inner {
     @include container;
-    min-height: clamp(240px, 15.6vw, 300px);
-    padding-block: clamp($space-48, 4.2vw, $space-72);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    padding: $space-96 0 $space-120;
   }
 
-  &__eyebrow {
-    margin: 0 0 $space-24;
-    color: rgba($color-white, 0.72);
+  &__breadcrumb {
+    margin-bottom: $space-16;
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    color: rgba($color-white, 0.6);
     font-size: 13px;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0;
-    @include keep-word;
+
+    a {
+      color: inherit;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    strong {
+      color: rgba($color-white, 0.92);
+      font-weight: 600;
+    }
   }
 
   h1 {
-    margin: 0 0 $space-32;
-    color: $color-primary-dark;
-    font-size: clamp(40px, 3.2vw, 52px);
-    font-weight: 700;
-    line-height: 1.18;
-    letter-spacing: 0;
-    @include keep-word;
-  }
-
-  &__description {
-    max-width: 820px;
     margin: 0;
-    color: $color-muted;
-    font-size: clamp(16px, 1vw, 18px);
-    font-weight: 400;
-    line-height: 1.7;
-    letter-spacing: 0;
-    white-space: pre-line;
-    @include keep-word;
+    color: $color-white;
+    font-size: clamp(34px, 3.2vw, 52px);
+    font-weight: 700;
+    line-height: 1.2;
   }
 
-  &--image {
-    background-image: var(--page-hero-bg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    h1 {
-      color: $color-white;
-    }
-
-    .page-hero__description {
-      color: rgba($color-white, 0.86);
-    }
+  p {
+    max-width: 640px;
+    margin-top: $space-20;
+    color: rgba($color-white, 0.78);
+    font-size: 16px;
+    line-height: 1.75;
+    word-break: keep-all;
   }
 }
 
 @media (max-width: $breakpoint-tablet) {
   .page-hero {
     &__inner {
-      min-height: clamp(220px, 28vw, 270px);
-      padding-block: $space-56;
+      padding: $space-72 0 $space-96;
     }
 
-    &__eyebrow {
-      margin-bottom: $space-20;
-    }
-
-    h1 {
-      margin-bottom: $space-28;
-    }
-
-    &__description {
-      max-width: 680px;
+    p {
+      font-size: 15px;
     }
   }
 }
@@ -86,24 +90,7 @@
 @media (max-width: $breakpoint-mobile) {
   .page-hero {
     &__inner {
-      min-height: 220px;
-      padding-block: $space-48;
-    }
-
-    &__eyebrow {
-      margin-bottom: $space-16;
-      font-size: 12px;
-    }
-
-    h1 {
-      margin-bottom: $space-20;
-      font-size: clamp(32px, 8vw, 40px);
-    }
-
-    &__description {
-      max-width: 100%;
-      font-size: 15px;
-      line-height: 1.7;
+      padding: $space-56 0 $space-80;
     }
   }
 }
