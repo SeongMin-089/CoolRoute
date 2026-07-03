@@ -53,6 +53,7 @@
   }
 
   &__item:hover .main-nav__arrow,
+  &__item.is-open .main-nav__arrow,
   &__link.is-active .main-nav__arrow {
     transform: rotate(180deg);
   }
@@ -80,10 +81,16 @@
   }
 
   &__item:hover .main-nav__dropdown,
-  &__item:focus-within .main-nav__dropdown {
+  &__item.is-open .main-nav__dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+
+  &.is-dropdown-closing &__item:hover .main-nav__dropdown {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
   }
 
   &__dropdown-link {

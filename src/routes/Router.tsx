@@ -16,6 +16,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/company" element={<Company />} />
@@ -24,7 +25,6 @@ function Router() {
           <Route path="/logistics-info" element={<LogisticsInfo />} />
           <Route path="/support" element={<Support />} />
           <Route path="/recruit" element={<Recruit />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/dashboard/store" element={<StoreDashboard />} />
           <Route path="/dashboard/driver" element={<DriverDashboard />} />
           <Route path="/dashboard/center" element={<CenterDashboard />} />
