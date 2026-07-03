@@ -9,7 +9,7 @@ interface PageHeroProps {
 }
 
 function PageHero({ title, description, image, backgroundImage }: PageHeroProps) {
-  const heroImage = backgroundImage ?? image
+  const heroImage = image ?? backgroundImage
 
   return (
     <section className={`page-hero${heroImage ? ' page-hero--image' : ''}`}>
