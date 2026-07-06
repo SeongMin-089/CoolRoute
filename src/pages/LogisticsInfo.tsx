@@ -108,8 +108,10 @@ function LogisticsInfo() {
         {/* 6. 상품 품질 관리 */}
         <section id="quality">
           <div className="section-header">
-            <SectionBadge>Step 3</SectionBadge>
-            <h2 className="section-title3">상품 품질 관리</h2>
+            <div className="section-heading-row">
+              <SectionBadge>Step 3</SectionBadge>
+              <h2 className="section-title3">상품 품질 관리</h2>
+            </div>
             <p className="section-desc">
               산지 품질이 한 치의 훼손, 오염, 기온차이 없이 유지되도록
               관리합니다.
@@ -156,8 +158,10 @@ function LogisticsInfo() {
         {/* 7. 콜드 체인 관리 포인트 */}
         <section id="point">
           <div className="section-header2">
-            <SectionBadge>Step 4</SectionBadge>
-            <h2 className="section-title">콜드 체인 관리 포인트</h2>
+            <div className="section-heading-row">
+              <SectionBadge>Step 4</SectionBadge>
+              <h2 className="section-title">콜드 체인 관리 포인트</h2>
+            </div>
             <p className="section-desc">
               이상 온도를 감지하는 실시간 센서 알람부터 신속한 조치, 대체
               차량까지 - 체계적인 품질 프로세스를 확인하세요.
