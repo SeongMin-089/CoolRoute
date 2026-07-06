@@ -1,30 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import PageHero from "../components/common/PageHero";
 import SectionBlock from "../components/common/SectionBlock";
 import { scrollToHashElement } from "../components/common/hashScroll";
+import SubNav from "../components/navigation/SubNav";
 
 import { subNavItems } from "../data/subNavData";
 
 type SupportSectionId = "notice" | "faq" | "guide" | "contact";
 
-interface SupportTab {
-  label: string;
-  id: SupportSectionId;
-}
-
-const supportTabs = subNavItems.support as SupportTab[];
-const supportTabIds = supportTabs.map((tab) => tab.id);
+const supportTabIds = subNavItems.support.map((tab) => tab.id);
 
 const isSupportSectionId = (id: string): id is SupportSectionId =>
   supportTabIds.includes(id as SupportSectionId);
-
-const supportTabIcons: Record<SupportSectionId, string> = {
-  notice: "⌂",
-  faq: "?",
-  guide: "□",
-  contact: "✉",
-};
 
 const sectionMeta: Record<SupportSectionId, { title: string; badge: string }> =
   {
@@ -142,6 +130,7 @@ const roleGuides = [
 
 function Support() {
   const { hash } = useLocation();
+  const pendingSectionScrollRef = useRef(false);
   const [activeSection, setActiveSection] =
     useState<SupportSectionId>("notice");
 
@@ -172,6 +161,24 @@ function Support() {
       window.cancelAnimationFrame(frameId);
     };
   }, [activeSection, hash]);
+
+  useEffect(() => {
+    if (!pendingSectionScrollRef.current) {
+      return;
+    }
+
+    pendingSectionScrollRef.current = false;
+
+    const frameId = window.requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        scrollToHashElement(activeSection);
+      }, 40);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [activeSection]);
 
   const renderSectionContent = () => {
     switch (activeSection) {
@@ -330,27 +337,15 @@ function Support() {
         backgroundImage="/business-hero-bg.png"
       />
 
-      <div className="support-tab-wrap">
-        <div className="support-tabs" role="tablist" aria-label="고객지원 메뉴">
-          {supportTabs.map((item) => {
-            const isActive = activeSection === item.id;
-
-            return (
-              <button
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                className={`support-tab ${isActive ? "is-active" : ""}`}
-                key={item.id}
-                onClick={() => setActiveSection(item.id)}
-              >
-                <span>{supportTabIcons[item.id]}</span>
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      <SubNav
+        items={subNavItems.support}
+        onSelect={(id) => {
+          if (isSupportSectionId(id)) {
+            pendingSectionScrollRef.current = true;
+            setActiveSection(id);
+          }
+        }}
+      />
 
       <main className="support-content">
         <section className="support-search-area">

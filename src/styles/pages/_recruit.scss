@@ -441,6 +441,33 @@
   }
 }
 
+@media (max-width: $breakpoint-small-tablet) {
+  .recruit-content {
+    padding: $space-72 0 $space-96;
+  }
+
+  .page--recruit .section-block {
+    margin-bottom: $space-96;
+  }
+
+  .page--recruit .section-title {
+    font-size: 22px;
+  }
+
+  .talent-card {
+    padding: $space-28;
+  }
+
+  .benefit-card,
+  .posting-card {
+    padding: $space-24;
+  }
+
+  .posting-bottom {
+    margin-top: $space-56;
+  }
+}
+
 @media (max-width: 640px) {
   .recruit-content {
     width: min(100% - 32px, 1440px);
@@ -461,7 +488,7 @@
   .posting-card {
     button {
       position: static;
-      width: 100%;
+      width: min(100%, 240px);
       margin-top: $space-24;
     }
   }
@@ -471,11 +498,49 @@
     align-items: flex-start;
 
     button {
-      width: 100%;
+      width: min(100%, 240px);
     }
   }
 
   .recruit-image-card {
     height: 240px;
+  }
+}
+
+@media (max-width: $breakpoint-small-mobile) {
+  .recruit-content {
+    width: min(100% - 40px, 1440px);
+    padding: $space-56 0;
+  }
+
+  .page--recruit .section-block {
+    margin-bottom: $space-64;
+  }
+
+  .page--recruit .section-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: $space-8;
+    font-size: 21px;
+  }
+
+  .talent-card,
+  .benefit-card,
+  .posting-card {
+    padding: $space-20;
+  }
+
+  .talent-card h3,
+  .job-item h3,
+  .posting-card h3 {
+    font-size: 20px;
+  }
+
+  .benefit-card h3 {
+    font-size: 18px;
+  }
+
+  .recruit-image-card {
+    height: 210px;
   }
 }

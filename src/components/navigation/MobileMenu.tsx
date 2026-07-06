@@ -1,16 +1,6 @@
 import { useEffect, useId, useState } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { navItems } from "../../data/navData"
-import { subNavItems } from "../../data/subNavData"
-
-const subNavKeyByPath = {
-  "/company": "company",
-  "/business": "business",
-  "/solution": "solution",
-  "/logistics-info": "logisticsInfo",
-  "/support": "support",
-  "/recruit": "recruit",
-} as const
 
 function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
@@ -76,41 +66,19 @@ function MobileMenu() {
             </div>
 
             <ul className="mobile-menu__list">
-              {navItems.map((item) => {
-                const subNavKey =
-                  subNavKeyByPath[item.path as keyof typeof subNavKeyByPath]
-                const dropdownItems = subNavKey ? subNavItems[subNavKey] : []
-
-                return (
-                  <li className="mobile-menu__item" key={item.path}>
-                    <NavLink
-                      className={({ isActive }) =>
-                        `mobile-menu__link${isActive ? " is-active" : ""}`
-                      }
-                      to={item.path}
-                      onClick={closeMenu}
-                    >
-                      {item.label}
-                    </NavLink>
-
-                    {dropdownItems.length > 0 && (
-                      <ul className="mobile-menu__sub-list">
-                        {dropdownItems.map((subItem) => (
-                          <li key={subItem.id}>
-                            <Link
-                              className="mobile-menu__sub-link"
-                              to={`${item.path}#${subItem.id}`}
-                              onClick={closeMenu}
-                            >
-                              {subItem.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                )
-              })}
+              {navItems.map((item) => (
+                <li className="mobile-menu__item" key={item.path}>
+                  <NavLink
+                    className={({ isActive }) =>
+                      `mobile-menu__link${isActive ? " is-active" : ""}`
+                    }
+                    to={item.path}
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
 
             <Link className="mobile-menu__login" to="/login" onClick={closeMenu}>

@@ -509,3 +509,79 @@
     box-shadow: none;
   }
 }
+
+@media (max-width: $breakpoint-small-tablet) {
+  .company-section__inner {
+    padding: $space-80 0;
+  }
+
+  .company-overview .company-section__inner {
+    padding-top: $space-80;
+  }
+
+  .company-overview__top {
+    gap: $space-40;
+  }
+
+  .company-overview__strategy-head {
+    margin-top: $space-72;
+  }
+
+  .company-section h2 {
+    font-size: 32px;
+  }
+
+  .company-section p,
+  .company-overview__vision-card p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .company-section__inner {
+    padding: $space-72 0;
+  }
+
+  .company-overview .company-section__inner {
+    padding-top: $space-72;
+  }
+
+  .company-section h2 {
+    font-size: clamp(28px, 7vw, 33px);
+  }
+}
+
+@media (max-width: $breakpoint-small-mobile) {
+  .company-section__inner {
+    padding: $space-56 0;
+  }
+
+  .company-overview .company-section__inner {
+    padding-top: $space-56;
+    padding-bottom: $space-56;
+  }
+
+  .company-section h2 {
+    font-size: 29px;
+  }
+
+  .company-overview__badge,
+  .company-overview__vision-badge,
+  .company-overview__strategy-badge,
+  .company-philosophy__badge,
+  .company-organization__badge {
+    margin-bottom: $space-24;
+  }
+
+  .company-overview__vision-card,
+  .company-philosophy__card,
+  .company-organization__card {
+    padding: $space-20;
+  }
+
+  .company-overview__strategies,
+  .company-philosophy__cards,
+  .company-organization__grid {
+    margin-top: $space-32;
+  }
+}

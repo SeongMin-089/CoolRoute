@@ -99,8 +99,7 @@
     }
   }
 
-  &__list,
-  &__sub-list {
+  &__list {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -112,7 +111,7 @@
   }
 
   &__item {
-    padding: $space-12;
+    padding: $space-10 $space-12;
     border: 1px solid $color-border;
     border-radius: $radius-md;
     background: $color-white;
@@ -130,36 +129,6 @@
     word-break: keep-all;
 
     &.is-active {
-      color: $color-primary;
-    }
-  }
-
-  &__sub-list {
-    margin-top: $space-8;
-    display: flex;
-    flex-wrap: wrap;
-    gap: $space-6;
-  }
-
-  &__sub-link {
-    min-height: 30px;
-    padding: 0 $space-10;
-    border-radius: $radius-full;
-    display: inline-flex;
-    align-items: center;
-    background: $color-badge-slate-bg;
-    color: $color-badge-slate-text;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.35;
-    word-break: keep-all;
-    transition:
-      color $transition-fast,
-      background $transition-fast;
-
-    &:hover,
-    &:focus-visible {
-      background: $color-primary-light;
       color: $color-primary;
     }
   }
