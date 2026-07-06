@@ -61,11 +61,11 @@ export const subNavItems: SubNavData = {
     { label: '역할별 관리 시스템', id: 'role-system' },
   ],
   logisticsInfo: [
-    { label: "콜드체인이란?", id: "definition" },
-    { label: "편의점 물류 흐름", id: "flow" },
+    { label: "콜드체인이란?", id: "intro" },
+    { label: "상품을 나누는 온도", id: "temp" },
+    { label: "편의점 물류 관리", id: "cvs" },
     { label: "상품 품질 관리", id: "quality" },
-    { label: "콜드체인 관리 포인트", id: "point" },
-    { label: "온도 이탈 대응", id: "response" },
+    { label: "콜드 체인 관리 포인트", id: "point" },
   ],
   support: [
     { label: "공지사항", id: "notice" },
