@@ -1,39 +1,23 @@
 import "../styles/pages/_logisticsInfo.scss";
-
-const subNavItems = [
-  { id: "temp", label: "상품을 나누는 온도" },
-  { id: "cvs", label: "편의점 물류 관리" },
-  { id: "quality", label: "상품 품질 관리" },
-  { id: "point", label: "콜드 체인 관리 포인트" },
-];
+import PageHero from "../components/common/PageHero";
+import SectionBadge from "../components/common/SectionBadge";
+import SubNav from "../components/navigation/SubNav";
+import { subNavItems } from "../data/subNavData";
 
 function LogisticsInfo() {
   return (
     <div className="logistics-info-page">
       {/* 1. Page Hero Section */}
-      <section className="hero-section">
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
-          <p className="hero-category">물류정보</p>
-          <h1 className="hero-title">물류정보</h1>
-          <p className="hero-desc">
-            콜드체인의 센터와 관리의 흐름, 그리고
-            <br />
-            물류 정보 시스템을 안내합니다.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="홈 › 물류정보"
+        title="물류정보"
+        description={`콜드체인의 센터와 관리의 흐름, 그리고
+물류 정보 시스템을 안내합니다.`}
+        backgroundImage="/header.png"
+      />
 
       {/* 2. Sub Navigation */}
-      <nav className="sub-nav-container">
-        <div className="sub-nav-list">
-          {subNavItems.map((item) => (
-            <a key={item.id} href={`#${item.id}`} className="sub-nav-item">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </nav>
+      <SubNav items={subNavItems.logisticsInfo} />
 
       <div className="content-wrapper">
         {/* 3. 콜드체인이란? */}
@@ -55,7 +39,7 @@ function LogisticsInfo() {
         {/* 4. 상품을 나누는 3가지 온도대 */}
         <section id="temp">
           <div className="section-header1">
-            <span className="step-badge">Step 1</span>
+            <SectionBadge>Step 1</SectionBadge>
             <h2 className="section-title">상품을 나누는 3가지 온도대</h2>
           </div>
           <div className="temp-grid">
@@ -89,7 +73,7 @@ function LogisticsInfo() {
         {/* 5. 편의점 물류 관리 */}
         <section id="cvs">
           <div className="section-header">
-            <span className="step-badge2">Step 2</span>
+            <SectionBadge>Step 2</SectionBadge>
             <h2 className="section-title2">편의점 물류 관리</h2>
           </div>
 
@@ -124,7 +108,7 @@ function LogisticsInfo() {
         {/* 6. 상품 품질 관리 */}
         <section id="quality">
           <div className="section-header">
-            <span className="step-badge3">Step 3</span>
+            <SectionBadge>Step 3</SectionBadge>
             <h2 className="section-title3">상품 품질 관리</h2>
             <p className="section-desc">
               산지 품질이 한 치의 훼손, 오염, 기온차이 없이 유지되도록
@@ -172,7 +156,7 @@ function LogisticsInfo() {
         {/* 7. 콜드 체인 관리 포인트 */}
         <section id="point">
           <div className="section-header2">
-            <span className="step-badge">Step 4</span>
+            <SectionBadge>Step 4</SectionBadge>
             <h2 className="section-title">콜드 체인 관리 포인트</h2>
             <p className="section-desc">
               이상 온도를 감지하는 실시간 센서 알람부터 신속한 조치, 대체

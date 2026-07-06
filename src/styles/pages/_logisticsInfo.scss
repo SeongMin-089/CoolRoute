@@ -6,106 +6,6 @@
   line-height: 1.5;
 }
 
-/* 1. Hero Section */
-.hero-section {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  background-image: url("/header.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #1e293b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: 1100px;
-  padding: 0 20px;
-  text-align: left;
-}
-
-.hero-category {
-  font-size: 14px;
-  font-weight: 600;
-  color: #93c5fd;
-  margin-bottom: 16px;
-  letter-spacing: 2px;
-}
-
-.hero-title {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 24px;
-}
-
-.hero-desc {
-  font-size: 18px;
-  font-weight: 300;
-  color: #e2e8f0;
-  line-height: 1.6;
-}
-
-/* 2. Sub Navigation */
-.sub-nav-container {
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #e5e7eb;
-  background-color: #ffffff;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.sub-nav-list {
-  display: flex;
-  gap: 16px; // 🎯 마디마디 배경이 생기므로 gap을 조금 줄여서 배치하면 예쁩니다 (기존 40px에서 조정)
-  padding: 12px 0; // 🎯 컨테이너 자체에 위아래 여백을 주어 버튼들이 정렬되게 합니다.
-}
-
-.sub-nav-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px; // 🎯 마우스 올렸을 때 감싸는 파란색 배경의 상하좌우 여백
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 6px; // 🎯 버튼 모서리를 둥글게 깎아줍니다.
-  transition: all 0.2s ease; // 배경색과 글자색이 부드럽게 바뀌도록 변경
-
-  // 1️⃣ [기본 상태] 파란색을 지우고 깔끔한 검은색 텍스트로 변경
-  color: #1a1a1a;
-  background-color: transparent;
-
-  // 2️⃣ [마우스를 올렸을 때 (Hover)] 파란색 배경 + 흰색 텍스트 적용
-  &:hover {
-    background-color: #2563eb; // 👈 쿨루트 브랜드 컬러와 매칭되는 선명한 파란색
-    color: #ffffff !important; // 👈 파란 배경에서 글자가 잘 보이도록 흰색 강제 적용
-  }
-
-  // 3️⃣ [현재 활성화된 페이지 상태 (Active)] 필요할 경우 적용
-  &.active {
-    background-color: #eff6ff; // 아주 연한 파란색 배경
-    color: #2563eb; // 파란색 글씨
-  }
-}
-
 /* 공통 섹션 레이아웃 */
 .content-wrapper {
   max-width: 1440px;
@@ -139,32 +39,6 @@
   margin-bottom: 32px;
 }
 
-.step-badge {
-  padding: 4px 12px;
-  background-color: #dbeafe;
-  color: #2563eb;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
-}
-.step-badge2 {
-  padding: 4px 12px;
-  background-color: #dbeafe;
-  color: #2563eb;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
-  margin-left: 20px;
-}
-.step-badge3 {
-  padding: 4px 12px;
-  background-color: #dbeafe;
-  color: #2563eb;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
-  margin-left: 20px;
-}
 .section-title {
   font-size: 24px;
   font-weight: 700;

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import PageHero from "../components/common/PageHero";
 import SectionBlock from "../components/common/SectionBlock";
+import { scrollToHashElement } from "../components/common/hashScroll";
 
 import { subNavItems } from "../data/subNavData";
 
@@ -12,6 +14,10 @@ interface SupportTab {
 }
 
 const supportTabs = subNavItems.support as SupportTab[];
+const supportTabIds = supportTabs.map((tab) => tab.id);
+
+const isSupportSectionId = (id: string): id is SupportSectionId =>
+  supportTabIds.includes(id as SupportSectionId);
 
 const supportTabIcons: Record<SupportSectionId, string> = {
   notice: "⌂",
@@ -135,10 +141,37 @@ const roleGuides = [
 ];
 
 function Support() {
+  const { hash } = useLocation();
   const [activeSection, setActiveSection] =
     useState<SupportSectionId>("notice");
 
   const activeMeta = sectionMeta[activeSection];
+
+  useEffect(() => {
+    const hashId = hash.replace("#", "");
+
+    if (isSupportSectionId(hashId)) {
+      setActiveSection(hashId);
+    }
+  }, [hash]);
+
+  useEffect(() => {
+    const hashId = hash.replace("#", "");
+
+    if (!isSupportSectionId(hashId) || hashId !== activeSection) {
+      return;
+    }
+
+    const frameId = window.requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        scrollToHashElement(hashId);
+      }, 40);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [activeSection, hash]);
 
   const renderSectionContent = () => {
     switch (activeSection) {
