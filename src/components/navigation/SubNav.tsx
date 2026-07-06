@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { HEADER_SCROLL_OFFSET, scrollToHashElement } from '../common/hashScroll'
 import type { SubNavItem } from '../../data/subNavData'
 
 interface SubNavProps {
@@ -28,14 +29,7 @@ function SubNav({ items = [] }: SubNavProps) {
       window.clearTimeout(scrollUnlockTimerRef.current)
     }
 
-    const headerOffset = 120
-    const top =
-      section.getBoundingClientRect().top + window.scrollY - headerOffset
-
-    window.scrollTo({
-      top,
-      behavior: 'smooth',
-    })
+    scrollToHashElement(sectionId)
 
     scrollUnlockTimerRef.current = window.setTimeout(() => {
       isProgrammaticScrollRef.current = false
@@ -52,7 +46,6 @@ function SubNav({ items = [] }: SubNavProps) {
         return
       }
 
-      const headerOffset = 140
       const current = items
         .map((item) => {
           const section = document.getElementById(item.id)
@@ -65,7 +58,7 @@ function SubNav({ items = [] }: SubNavProps) {
 
           return {
             id: item.id,
-            distance: Math.abs(sectionTop - headerOffset),
+            distance: Math.abs(sectionTop - HEADER_SCROLL_OFFSET),
           }
         })
         .filter((item): item is { id: string; distance: number } =>
