@@ -67,6 +67,52 @@ export interface DashboardData {
   center: DashboardCardItem[];
 }
 
+export const centerDashboardData: DashboardRoleData = {
+  role: 'center',
+  roleName: '물류센터',
+  eyebrow: 'Center Workspace',
+  title: '센터 대시보드',
+  description: '오늘 처리할 주문, 피킹, 입출고, 재고와 창고 온도 상태를 확인하세요.',
+  operator: '강남 통합물류센터',
+  updateLabel: '오늘 09:42 기준',
+  primaryAction: '출고 지시',
+  secondaryAction: '재고 확인',
+  summaryCards: [
+    { label: '신규 주문', value: '42건', meta: '자동 승인 31건', trend: '+11', tone: 'info' },
+    { label: '피킹 진행', value: '31건', meta: '냉장 18건', trend: '74%', tone: 'ok' },
+    { label: '출고 대기', value: '9건', meta: '피크 배차 대기', trend: '확인', tone: 'warn' },
+    { label: '온도 이상', value: '2건', meta: '냉동 구역 확인 필요', trend: '주의', tone: 'risk' },
+  ],
+  flow: [
+    { label: '주문 접수', value: '42', caption: '점포 발주 접수', tone: 'info' },
+    { label: '피킹', value: '31', caption: '작업자 배정 완료', tone: 'ok' },
+    { label: '검수', value: '18', caption: '상차 전 확인', tone: 'ok' },
+    { label: '출고 대기', value: '9', caption: '배차 확인 필요', tone: 'warn' },
+  ],
+  priorityItems: [
+    { title: 'B 피크 출고 병목', detail: '2차 배송 차량 상차가 대기 중입니다.', due: '10:20까지', tone: 'risk' },
+    { title: '냉동 F-02 온도 확인', detail: '기준 온도를 초과해 담당자 확인이 필요합니다.', due: '즉시', tone: 'warn' },
+    { title: '안전 재고 미달', detail: '김밥, 샐러드, 생수 재고를 우선 확인하세요.', due: '오전 중', tone: 'info' },
+    { title: '폐기 회수 분류', detail: '회수 박스 12개 분류 작업이 예정되어 있습니다.', due: '14:00 예정', tone: 'ok' },
+  ],
+  recordTitle: '센터 작업 현황',
+  recordCaption: '주문, 피킹, 입출고, 회수 관련 주요 작업입니다.',
+  records: [
+    { code: 'WMS-3812', title: '냉장 피킹 1차', owner: '박서준', status: '진행 중', schedule: '10:10', tone: 'ok' },
+    { code: 'WMS-3820', title: 'B 피크 출고', owner: '이하린', status: '지연 위험', schedule: '10:20', tone: 'risk' },
+    { code: 'WMS-3828', title: '상온 보충 입고', owner: '최민재', status: '검수 대기', schedule: '11:00', tone: 'info' },
+    { code: 'WMS-3834', title: '폐기 회수 분류', owner: '정유나', status: '작업 예약', schedule: '14:00', tone: 'warn' },
+  ],
+  monitorTitle: '센터 모니터링',
+  monitorCaption: '창고, 피크, 온도, 장비 상태를 확인하세요.',
+  monitors: [
+    { label: '냉장 창고', value: '2.4°C', detail: '정상 범위', tone: 'ok' },
+    { label: '냉동 창고', value: '-17.8°C', detail: '확인 필요', tone: 'warn' },
+    { label: '출고 피크', value: '82%', detail: '일시 혼잡', tone: 'info' },
+    { label: '장비 알림', value: '0건', detail: '조치 없음', tone: 'ok' },
+  ],
+}
+
 export const dashboardRoleData: Record<DashboardRole, DashboardRoleData> = {
   store: {
     role: 'store',
@@ -547,5 +593,5 @@ export const dashboardRoleData: Record<DashboardRole, DashboardRoleData> = {
 export const dashboardCards: DashboardData = {
   store: dashboardRoleData.store.summaryCards,
   driver: dashboardRoleData.driver.summaryCards,
-  center: dashboardRoleData.center.summaryCards,
+  center: centerDashboardData.summaryCards,
 }

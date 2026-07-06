@@ -197,9 +197,9 @@ function StoreDashboard() {
 
           <div className="store-dashboard__user">
             <span>점주(store)</span>
-            <Link to="/login" onClick={clearStoredDashboardRole}>
-              로그아웃
-            </Link>
+              <Link to="/" onClick={clearStoredDashboardRole}>
+                로그아웃
+              </Link>
           </div>
         </header>
 

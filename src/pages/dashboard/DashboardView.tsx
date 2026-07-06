@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { Link, Navigate, NavLink, useLocation } from 'react-router-dom'
 import DashboardCard from '../../components/common/DashboardCard'
 import {
+  centerDashboardData,
   dashboardRoleData,
   type DashboardRole,
   type DashboardRoleData,
@@ -17,16 +18,6 @@ interface DashboardViewProps {
   children?: ReactNode
 }
 
-const dashboardNavItems: Array<{
-  label: string
-  path: string
-}> = [
-  { label: '대시보드', path: '/dashboard/store' },
-  { label: '발주관리', path: '/dashboard/store/orders' },
-  { label: '배송현황', path: '/dashboard/store/delivery' },
-  { label: '폐기관리', path: '/dashboard/store/disposal' },
-]
-
 const dashboardRoleNavItems: Record<
   DashboardRole,
   Array<{
@@ -34,7 +25,12 @@ const dashboardRoleNavItems: Record<
     path: string
   }>
 > = {
-  store: dashboardNavItems,
+  store: [
+    { label: '대시보드', path: '/dashboard/store' },
+    { label: '발주 관리', path: '/dashboard/store/orders' },
+    { label: '배송 현황', path: '/dashboard/store/delivery' },
+    { label: '폐기 관리', path: '/dashboard/store/disposal' },
+  ],
   driver: [
     { label: '대시보드', path: '/dashboard/driver' },
     { label: '배송목록', path: '/dashboard/driver/deliveries' },
@@ -48,6 +44,10 @@ const dashboardRoleNavItems: Record<
     { label: '입출고 내역', path: '/dashboard/center/inout' },
     { label: '창고 온도', path: '/dashboard/center/temperature' },
   ],
+}
+
+function getDashboardData(role: DashboardRole) {
+  return role === 'center' ? centerDashboardData : dashboardRoleData[role]
 }
 
 function DashboardOverview({
@@ -250,8 +250,8 @@ function DashboardAccessDenied({
   authenticatedRole: DashboardRole
   requestedRole: DashboardRole
 }) {
-  const authenticatedDashboard = dashboardRoleData[authenticatedRole]
-  const requestedDashboard = dashboardRoleData[requestedRole]
+  const authenticatedDashboard = getDashboardData(authenticatedRole)
+  const requestedDashboard = getDashboardData(requestedRole)
 
   return (
     <main className="dashboard-access">
@@ -259,7 +259,7 @@ function DashboardAccessDenied({
         <span className="dashboard-access__eyebrow">Access restricted</span>
         <h1 id="access-title">접근 권한이 없습니다.</h1>
         <p>
-          현재 로그인 역할은 {authenticatedDashboard.roleName}입니다.{' '}
+          현재 로그인한 역할은 {authenticatedDashboard.roleName}입니다.{' '}
           {requestedDashboard.roleName} 대시보드는 해당 역할 계정으로 로그인해야
           볼 수 있습니다.
         </p>
@@ -272,10 +272,10 @@ function DashboardAccessDenied({
           </Link>
           <Link
             className="dashboard-action"
-            to="/login"
+            to="/"
             onClick={clearStoredDashboardRole}
           >
-            다시 로그인
+            로그아웃
           </Link>
         </div>
       </section>
@@ -300,7 +300,7 @@ function DashboardView({ role, children }: DashboardViewProps) {
     )
   }
 
-  const dashboard = dashboardRoleData[role]
+  const dashboard = getDashboardData(role)
   const isOverviewPath = location.pathname === `/dashboard/${role}`
   const navItems = dashboardRoleNavItems[role]
 
@@ -338,10 +338,10 @@ function DashboardView({ role, children }: DashboardViewProps) {
 
         <Link
           className="dashboard-sidebar__logout"
-          to="/login"
+          to="/"
           onClick={clearStoredDashboardRole}
         >
-          로그인 화면으로
+          로그아웃
         </Link>
       </aside>
 
