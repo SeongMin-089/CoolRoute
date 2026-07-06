@@ -1,3 +1,4 @@
+import { useId, useState } from "react";
 import { Link } from "react-router-dom";
 
 interface FooterMenuItem {
@@ -61,6 +62,11 @@ const footerMenus: FooterMenu[] = [
 ];
 
 function Footer() {
+  const [openFooterMenu, setOpenFooterMenu] = useState<string | null>(null);
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
+  const footerMenuId = useId();
+  const supportId = `${footerMenuId}-support`;
+
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
@@ -87,10 +93,37 @@ function Footer() {
           </div>
 
           <nav className="site-footer__nav" aria-label="Footer navigation">
-            {footerMenus.map((menu) => (
-              <div key={menu.title} className="site-footer__menu">
-                <h2 className="site-footer__menu-title">{menu.title}</h2>
-                <ul className="site-footer__menu-list">
+            {footerMenus.map((menu, index) => {
+              const menuId = `${footerMenuId}-menu-${index}`;
+              const isOpen = openFooterMenu === menu.title;
+
+              return (
+                <div
+                  key={menu.title}
+                  className={`site-footer__menu${isOpen ? " is-open" : ""}`}
+                >
+                  <h2 className="site-footer__menu-title">
+                    <button
+                      type="button"
+                      className="site-footer__menu-trigger"
+                      aria-expanded={isOpen}
+                      aria-controls={menuId}
+                      onClick={() =>
+                        setOpenFooterMenu((current) =>
+                          current === menu.title ? null : menu.title,
+                        )
+                      }
+                    >
+                      <span>{menu.title}</span>
+                      <span
+                        className="site-footer__menu-arrow"
+                        aria-hidden="true"
+                      >
+                        ⌄
+                      </span>
+                    </button>
+                  </h2>
+                  <ul id={menuId} className="site-footer__menu-list">
                   {menu.items.map((item) => (
                     <li key={`${menu.title}-${item.label}`}>
                       <Link to={item.path} className="site-footer__menu-link">
@@ -98,30 +131,50 @@ function Footer() {
                       </Link>
                     </li>
                   ))}
-                </ul>
-              </div>
-            ))}
+                  </ul>
+                </div>
+              );
+            })}
           </nav>
 
-          <div className="site-footer__support">
-            <h2 className="site-footer__support-title">고객지원</h2>
-            <div className="site-footer__support-list">
-              <div>
-                <span className="site-footer__support-label">운영 시간</span>
-                <p className="site-footer__support-text">
-                  평일 09:00 ~ 18:00 · 주말·공휴일 휴무
-                </p>
+          <div
+            className={`site-footer__support${
+              isSupportOpen ? " is-open" : ""
+            }`}
+          >
+            <h2 className="site-footer__support-title">
+              <button
+                type="button"
+                className="site-footer__support-trigger"
+                aria-expanded={isSupportOpen}
+                aria-controls={supportId}
+                onClick={() => setIsSupportOpen((current) => !current)}
+              >
+                <span>고객센터</span>
+                <span className="site-footer__support-arrow" aria-hidden="true">
+                  ⌄
+                </span>
+              </button>
+            </h2>
+            <div id={supportId} className="site-footer__support-content">
+              <div className="site-footer__support-list">
+                <div>
+                  <span className="site-footer__support-label">운영 시간</span>
+                  <p className="site-footer__support-text">
+                    평일 09:00 ~ 18:00 · 주말·공휴일 휴무
+                  </p>
+                </div>
+                <div>
+                  <span className="site-footer__support-label">이메일</span>
+                  <p className="site-footer__support-text">
+                    support@coolroute.co.kr
+                  </p>
+                </div>
               </div>
-              <div>
-                <span className="site-footer__support-label">이메일</span>
-                <p className="site-footer__support-text">
-                  support@coolroute.co.kr
-                </p>
-              </div>
+              <Link to="/login" className="site-footer__login">
+                시스템 로그인
+              </Link>
             </div>
-            <Link to="/login" className="site-footer__login">
-              시스템 로그인
-            </Link>
           </div>
         </div>
 
