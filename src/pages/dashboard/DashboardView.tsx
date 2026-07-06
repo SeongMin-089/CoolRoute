@@ -26,9 +26,9 @@ const dashboardRoleNavItems: Record<
 > = {
   store: [
     { label: '대시보드', path: '/dashboard/store' },
-    { label: '발주관리', path: '/dashboard/store/orders' },
-    { label: '배송현황', path: '/dashboard/store/delivery' },
-    { label: '폐기관리', path: '/dashboard/store/disposal' },
+    { label: '발주 관리', path: '/dashboard/store/orders' },
+    { label: '배송 현황', path: '/dashboard/store/delivery' },
+    { label: '폐기 관리', path: '/dashboard/store/disposal' },
   ],
   driver: [
     { label: '대시보드', path: '/dashboard/driver' },
@@ -47,28 +47,27 @@ const dashboardRoleNavItems: Record<
 
 const storeOverviewData: DashboardRoleData = {
   role: 'store',
-  roleName: '편의점주',
+  roleName: '점주',
   eyebrow: 'Store Workspace',
-  title: '점포 운영 대시보드',
-  description:
-    '오늘 발주, 입고 예정, 배송 상태, 폐기 임박 상품을 한 화면에서 확인합니다.',
+  title: '점포 대시보드',
+  description: '오늘 발주, 배송, 입고, 폐기 현황을 한눈에 확인하세요.',
   operator: '강남역 2호점',
   updateLabel: '오늘 09:42 기준',
   primaryAction: '발주 등록',
-  secondaryAction: '입고 확인',
+  secondaryAction: '입고 처리',
   summaryCards: [
     {
-      label: '오늘 발주 승인',
+      label: '발주 승인',
       value: '18건',
       meta: '자동 승인 14건',
-      trend: '+4건',
+      trend: '전일 대비 +4',
       tone: 'ok',
     },
     {
-      label: '입고 예정',
+      label: '다음 입고',
       value: '12:30',
-      meta: '냉장 차량 2대 대기',
-      trend: '정상',
+      meta: '냉장 배송 2건 대기',
+      trend: '예정',
       tone: 'info',
     },
     {
@@ -79,67 +78,67 @@ const storeOverviewData: DashboardRoleData = {
       tone: 'warn',
     },
     {
-      label: '냉장 평균 온도',
+      label: '냉장 온도',
       value: '3.1°C',
-      meta: '최근 2시간 안정권',
+      meta: '최근 2시간 정상',
       trend: '정상',
       tone: 'ok',
     },
   ],
   flow: [
     {
-      label: '발주 요청',
+      label: '발주 접수',
       value: '24',
-      caption: '오전 마감 전 접수',
+      caption: '오전 발주 마감 전',
       tone: 'info',
     },
     {
       label: '센터 승인',
       value: '21',
-      caption: '3건 수량 조정 대기',
+      caption: '수량 조정 3건',
       tone: 'warn',
     },
     {
       label: '배송 중',
       value: '12',
-      caption: '1차 배송 도착 예정',
+      caption: '1차 배송 이동 중',
       tone: 'ok',
     },
     {
       label: '입고 완료',
       value: '9',
-      caption: '검수 완료 처리',
+      caption: '검수 완료',
       tone: 'ok',
     },
   ],
   priorityItems: [
     {
-      title: '폐기 임박 상품 확인',
-      detail: '바나나우유 250ml 등 6개 품목의 처리 여부를 확인합니다.',
+      title: '폐기 임박 상품',
+      detail: '바나나우유 250ml 등 6개 품목 확인 필요',
       due: '10:30까지',
       tone: 'warn',
     },
     {
-      title: '긴급 재발주 검토',
-      detail: '삼각김밥 재고가 안전 재고 아래로 내려갔습니다.',
+      title: '재발주 필요 상품',
+      detail: '삼각김밥 재고가 안전 기준보다 낮습니다.',
       due: '11:00까지',
       tone: 'risk',
     },
     {
-      title: '1차 배송 입고 검수',
-      detail: '냉장 박스 18개, 상온 박스 11개 도착 예정입니다.',
+      title: '1차 배송 입고',
+      detail: '냉장 18박스, 상온 11박스 도착 예정',
       due: '12:30 예정',
       tone: 'info',
     },
     {
-      title: '프로모션 진열 수량 조정',
-      detail: '아이스크림 행사 SKU 3종의 매대 보충이 필요합니다.',
+      title: '행사 상품 보충',
+      detail: '아이스크림 행사 상품 3종 보충 필요',
       due: '영업 중',
       tone: 'ok',
     },
   ],
-  recordTitle: '오늘 입고 및 처리 목록',
-  recordCaption: '점포 기준으로 도착 예정과 검수 상태를 정리했습니다.',
+  recordTitle: '오늘 처리 현황',
+  recordCaption: '배송, 입고, 폐기 관련 주요 업무를 정리했습니다.',
   records: [
     {
       code: 'ORD-2407',
@@ -174,19 +173,19 @@ const storeOverviewData: DashboardRoleData = {
       tone: 'risk',
     },
   ],
-  monitorTitle: '점포 모니터링',
-  monitorCaption: '냉장 설비와 재고 예외 신호를 요약합니다.',
+  monitorTitle: '점포 상태',
+  monitorCaption: '냉장 설비와 재고 이상 여부를 확인하세요.',
   monitors: [
     {
       label: '냉장 쇼케이스',
       value: '3.0°C',
-      detail: '허용 범위 유지',
+      detail: '정상 범위 유지',
       tone: 'ok',
     },
     {
       label: '냉동고',
       value: '-19.4°C',
-      detail: '정상 순환',
+      detail: '정상 가동',
       tone: 'ok',
     },
     {
@@ -198,28 +197,23 @@ const storeOverviewData: DashboardRoleData = {
     {
       label: '미검수 박스',
       value: '0개',
-      detail: '대기 없음',
+      detail: '미검수 없음',
       tone: 'info',
     },
   ],
 }
 
-const storeQuickActions = [
-  '발주 등록',
-  '배송 현황 확인',
-  '폐기 상품 등록',
-  '입고 검수 처리',
-] as const
+const storeQuickActions = ['발주 등록', '배송 현황', '폐기 등록', '입고 처리'] as const
 
 const storeRecentActivities = [
   'ORD-2407 냉장 신선식품 묶음 배송 중',
   'RTN-0912 폐기 회수 등록 확인 필요',
-  'SFT-3301 안전 재고 자동 제안 승인 대기',
+  'SFT-3301 안전 재고 제안 승인 대기',
   'DLV-1201 1차 배송 도착 예정',
 ] as const
 
 const storeTodayAlerts = [
-  '아이스크림 행사 상품 재고가 안전 기준 아래로 내려갔습니다.',
+  '아이스크림 행사 상품 재고가 안전 기준보다 낮습니다.',
   '1차 냉장 배송은 12:30 도착 예정입니다.',
   '유제품 4개 품목은 오늘 폐기 여부 확인이 필요합니다.',
 ] as const
@@ -413,7 +407,7 @@ function DashboardOverview({
                 <div>
                   <span className="dashboard-panel__eyebrow">Quick</span>
                   <h2 id="store-quick-title">빠른 작업</h2>
-                  <p>점주가 자주 처리하는 업무를 바로 확인합니다.</p>
+                  <p>자주 처리하는 점포 업무를 바로 확인하세요.</p>
                 </div>
               </div>
 
@@ -434,7 +428,7 @@ function DashboardOverview({
                 <div>
                   <span className="dashboard-panel__eyebrow">Activity</span>
                   <h2 id="store-activity-title">최근 활동</h2>
-                  <p>최근 발주, 배송, 폐기 흐름을 시간순으로 정리했습니다.</p>
+                  <p>발주, 배송, 폐기 흐름을 최근 순서로 정리했습니다.</p>
                 </div>
               </div>
 
@@ -453,7 +447,7 @@ function DashboardOverview({
                 <div>
                   <span className="dashboard-panel__eyebrow">Notice</span>
                   <h2 id="store-alert-title">오늘 알림</h2>
-                  <p>점포 운영 중 놓치기 쉬운 확인 항목입니다.</p>
+                  <p>점포 운영 중 놓치기 쉬운 항목입니다.</p>
                 </div>
               </div>
 

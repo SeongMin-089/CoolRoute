@@ -165,7 +165,7 @@
   min-width: 0;
   display: grid;
   align-content: start;
-  gap: $space-24;
+  gap: $space-20;
   padding: $space-32 $space-40 $space-48;
 }
 
@@ -566,8 +566,11 @@
 // ==========================================================================
 
 .dashboard-workspace--subpage {
+  gap: $space-16;
+
   .dashboard-hero {
     align-items: center;
+    padding: $space-4 $space-4 $space-12;
   }
 }
 
@@ -576,6 +579,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: $space-8;
+}
+
+.dashboard-filter-list {
+  margin-top: -$space-4;
 }
 
 .dashboard-filter {

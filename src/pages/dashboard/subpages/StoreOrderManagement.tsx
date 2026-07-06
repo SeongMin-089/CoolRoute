@@ -2,9 +2,9 @@ import DashboardView from '../DashboardView'
 
 const summaryCards = [
   {
-    label: '오늘 발주 요청',
+    label: '발주 요청',
     value: '24건',
-    meta: '오전 마감 전 접수',
+    meta: '오전 마감 전',
     trend: '+6건',
     tone: 'info',
   },
@@ -18,20 +18,20 @@ const summaryCards = [
   {
     label: '조정 대기',
     value: '3건',
-    meta: '센터 수량 확인 필요',
+    meta: '수량 확인 필요',
     trend: '확인',
     tone: 'warn',
   },
   {
-    label: '긴급 재발주',
+    label: '재발주 필요',
     value: '2건',
-    meta: '안전 재고 미달',
+    meta: '안전 재고 기준 미달',
     trend: '주의',
     tone: 'risk',
   },
 ] as const
 
-const filters = ['전체', '승인 완료', '승인 대기', '수량 조정', '확인 필요']
+const filters = ['전체', '승인 완료', '승인 대기', '조정 대기', '확인 필요']
 
 const orders = [
   {
@@ -50,7 +50,7 @@ const orders = [
     category: '냉장',
     requested: 18,
     approved: 15,
-    status: '수량 조정',
+    status: '조정 대기',
     tone: 'warn',
     deadline: '11:00',
   },
@@ -87,9 +87,9 @@ const orders = [
 ] as const
 
 const recommendations = [
-  '삼각김밥 3종은 최근 3일 판매량이 증가해 12개 추가 발주를 권장합니다.',
-  '아이스크림 행사 상품은 프로모션 진열 수량이 부족해 8개 보충을 권장합니다.',
-  '생수 500ml는 안전 재고 미달 상태로 20개 발주를 권장합니다.',
+  '삼각김밥 3종: 최근 3일 판매량 증가, 12개 추가 발주 권장',
+  '아이스크림 행사 상품: 진열 수량 부족, 8개 보충 권장',
+  '생수 500ml: 안전 재고 기준 미달, 20개 발주 권장',
 ] as const
 
 function StoreOrderManagement() {
@@ -97,13 +97,13 @@ function StoreOrderManagement() {
     <DashboardView role="store">
       <div className="dashboard-hero">
         <div className="dashboard-hero__copy">
-          <span className="dashboard-eyebrow">Store Orders</span>
-          <h1>발주관리</h1>
-          <p>점포별 상품 발주 요청과 승인 상태를 확인합니다.</p>
+          <span className="dashboard-eyebrow">Store Order</span>
+          <h1>발주 관리</h1>
+          <p>오늘 발주 요청과 승인 상태를 확인하세요.</p>
         </div>
         <div className="dashboard-hero__actions">
           <button className="dashboard-action" type="button">
-            추천 발주 확인
+            추천 발주
           </button>
           <button
             className="dashboard-action dashboard-action--primary"
@@ -146,9 +146,9 @@ function StoreOrderManagement() {
         <section className="dashboard-panel dashboard-panel--wide">
           <div className="dashboard-panel__titlebar">
             <div>
-              <span className="dashboard-panel__eyebrow">Order List</span>
-              <h2>발주 요청 목록</h2>
-              <p>마감 시간 전 승인, 수량 조정, 확인 필요 항목을 함께 봅니다.</p>
+              <span className="dashboard-panel__eyebrow">Orders</span>
+              <h2>발주 목록</h2>
+              <p>발주별 승인 상태와 마감 시간을 확인하세요.</p>
             </div>
           </div>
 
@@ -159,10 +159,10 @@ function StoreOrderManagement() {
                   <th scope="col">발주번호</th>
                   <th scope="col">상품명</th>
                   <th scope="col">카테고리</th>
-                  <th scope="col">요청수량</th>
-                  <th scope="col">승인수량</th>
+                  <th scope="col">요청</th>
+                  <th scope="col">승인</th>
                   <th scope="col">상태</th>
-                  <th scope="col">마감시간</th>
+                  <th scope="col">마감</th>
                 </tr>
               </thead>
               <tbody>
@@ -191,9 +191,9 @@ function StoreOrderManagement() {
         <section className="dashboard-panel">
           <div className="dashboard-panel__titlebar">
             <div>
-              <span className="dashboard-panel__eyebrow">Recommend</span>
+              <span className="dashboard-panel__eyebrow">Recommendation</span>
               <h2>추천 발주</h2>
-              <p>판매 흐름과 안전 재고 기준으로 보충 후보를 정리했습니다.</p>
+              <p>판매 추이와 안전 재고를 기준으로 보충 상품을 제안합니다.</p>
             </div>
           </div>
 
@@ -205,11 +205,8 @@ function StoreOrderManagement() {
 
           <div className="dashboard-subpage__notice">
             <strong>발주 안내</strong>
-            <p>
-              발주 마감 전 승인되지 않은 항목은 센터 확인 후 자동 조정될 수
-              있습니다.
-            </p>
-            <p>냉장/냉동 상품은 온도 구분별로 묶음 발주합니다.</p>
+            <p>마감 전 승인되지 않은 발주는 센터에서 수량을 조정할 수 있습니다.</p>
+            <p>냉장/냉동 상품은 온도 구분에 따라 묶음 발주합니다.</p>
           </div>
         </section>
       </div>

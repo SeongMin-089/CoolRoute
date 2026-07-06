@@ -9,7 +9,7 @@ const summaryCards = [
     tone: 'warn',
   },
   {
-    label: '오늘 폐기 등록',
+    label: '폐기 등록',
     value: '4건',
     meta: '회수 대기 2건',
     trend: '+1건',
@@ -18,7 +18,7 @@ const summaryCards = [
   {
     label: '회수 예정',
     value: '2건',
-    meta: '17:30 기사 방문',
+    meta: '17:30 방문 예정',
     trend: '예정',
     tone: 'ok',
   },
@@ -26,7 +26,7 @@ const summaryCards = [
     label: '손실 예상',
     value: '38,000원',
     meta: '전일 대비 -12%',
-    trend: '감소',
+    trend: '절감',
     tone: 'ok',
   },
 ] as const
@@ -49,9 +49,9 @@ const expiringItems = [
     category: '간편식',
     quantity: 6,
     expiry: '오늘 22:00',
-    status: '할인 권장',
+    status: '할인 판매 권장',
     statusTone: 'warn',
-    action: '처리 대기',
+    action: '등록 대기',
     actionTone: 'info',
   },
   {
@@ -60,9 +60,9 @@ const expiringItems = [
     category: '신선식품',
     quantity: 3,
     expiry: '내일 09:00',
-    status: '주의',
+    status: '확인 필요',
     statusTone: 'warn',
-    action: '모니터링',
+    action: '확인 중',
     actionTone: 'info',
   },
   {
@@ -79,9 +79,9 @@ const expiringItems = [
 ] as const
 
 const guideItems = [
-  '폐기 등록 전 할인 판매 가능한 상품을 먼저 확인하세요.',
+  '폐기 전 할인 판매 가능한 상품을 먼저 확인하세요.',
   '냉장 상품은 회수 박스에 분리 보관하세요.',
-  '회수 요청한 상품은 입고/판매 재고에서 제외됩니다.',
+  '회수 요청 상품은 판매 재고에서 제외됩니다.',
 ] as const
 
 function StoreDisposalManagement() {
@@ -90,8 +90,8 @@ function StoreDisposalManagement() {
       <div className="dashboard-hero">
         <div className="dashboard-hero__copy">
           <span className="dashboard-eyebrow">Store Disposal</span>
-          <h1>폐기관리</h1>
-          <p>유통기한 임박 상품과 폐기 회수 상태를 관리합니다.</p>
+          <h1>폐기 관리</h1>
+          <p>유통기한 임박 상품과 회수 상태를 확인하세요.</p>
         </div>
         <div className="dashboard-hero__actions">
           <button className="dashboard-action" type="button">
@@ -126,9 +126,9 @@ function StoreDisposalManagement() {
         <section className="dashboard-panel dashboard-panel--wide">
           <div className="dashboard-panel__titlebar">
             <div>
-              <span className="dashboard-panel__eyebrow">Expiration</span>
-              <h2>폐기 임박 목록</h2>
-              <p>유통기한과 처리 상태를 기준으로 우선순위를 확인합니다.</p>
+              <span className="dashboard-panel__eyebrow">Expiring</span>
+              <h2>폐기 대상 목록</h2>
+              <p>유통기한과 처리 상태를 기준으로 확인하세요.</p>
             </div>
           </div>
 
@@ -136,11 +136,11 @@ function StoreDisposalManagement() {
             <table className="dashboard-table">
               <thead>
                 <tr>
-                  <th scope="col">상품코드</th>
+                  <th scope="col">코드</th>
                   <th scope="col">상품명</th>
                   <th scope="col">카테고리</th>
                   <th scope="col">수량</th>
-                  <th scope="col">유통기한</th>
+                  <th scope="col">기한</th>
                   <th scope="col">상태</th>
                   <th scope="col">처리</th>
                 </tr>
@@ -178,22 +178,22 @@ function StoreDisposalManagement() {
           <div className="dashboard-panel__titlebar">
             <div>
               <span className="dashboard-panel__eyebrow">Pickup</span>
-              <h2>폐기 회수</h2>
-              <p>오늘 회수 예정인 박스와 기사 정보를 확인합니다.</p>
+              <h2>회수 정보</h2>
+              <p>오늘 회수 예정 정보를 확인하세요.</p>
             </div>
           </div>
 
           <dl className="dashboard-mini-card">
             <div>
-              <dt>회수 박스</dt>
+              <dt>박스 번호</dt>
               <dd>BOX-09</dd>
             </div>
             <div>
-              <dt>회수 기사</dt>
+              <dt>담당 기사</dt>
               <dd>김도윤 기사</dd>
             </div>
             <div>
-              <dt>회수 예정</dt>
+              <dt>예정 시간</dt>
               <dd>오늘 17:30</dd>
             </div>
             <div>
