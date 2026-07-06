@@ -562,6 +562,199 @@
 }
 
 // ==========================================================================
+// Store subpage helpers
+// ==========================================================================
+
+.dashboard-workspace--subpage {
+  .dashboard-hero {
+    align-items: center;
+  }
+}
+
+.dashboard-filter-list,
+.dashboard-subpage__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-8;
+}
+
+.dashboard-filter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $size-control-sm;
+  padding: 0 $space-12;
+  border: 1px solid $color-border;
+  border-radius: $radius-full;
+  background: $color-white;
+  color: $color-muted;
+  font-size: $text-body-md;
+  font-weight: $weight-body-bold;
+  transition:
+    border-color $transition-fast,
+    background $transition-fast,
+    color $transition-fast;
+
+  &:hover,
+  &:focus-visible,
+  &.is-active {
+    border-color: $color-border-blue;
+    background: $color-primary-light;
+    color: $color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($color-primary, 0.18);
+    outline-offset: 2px;
+  }
+}
+
+.dashboard-sub-list,
+.dashboard-checklist,
+.dashboard-info-list,
+.dashboard-timeline {
+  display: grid;
+  gap: $space-10;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dashboard-sub-list li,
+.dashboard-info-list li,
+.dashboard-timeline li {
+  padding: $space-12;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: $color-bg-soft;
+  color: $color-text;
+  font-size: $text-body-md;
+  font-weight: $weight-body-medium;
+  line-height: $leading-md;
+  word-break: keep-all;
+}
+
+.dashboard-checklist li {
+  position: relative;
+  padding: $space-12 $space-12 $space-12 $space-40;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: $color-white;
+  color: $color-text;
+  font-size: $text-body-md;
+  font-weight: $weight-body-semibold;
+  line-height: $leading-md;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: $space-12;
+    top: 50%;
+    width: $space-12;
+    height: $space-12;
+    border: 2px solid $color-primary;
+    border-radius: $radius-xs;
+    transform: translateY(-50%);
+  }
+}
+
+.dashboard-subpage__notice {
+  display: grid;
+  gap: $space-8;
+  margin-top: $space-20;
+  padding: $space-16;
+  border: 1px solid $color-border-blue;
+  border-radius: $radius-md;
+  background: $color-primary-light;
+
+  strong {
+    color: $color-primary-dark;
+    font-size: $text-body-lg;
+    font-weight: $weight-heading-bold;
+  }
+
+  p {
+    margin: 0;
+    color: $color-text;
+    font-size: $text-body-md;
+    font-weight: $weight-body-medium;
+    line-height: $leading-md;
+    word-break: keep-all;
+  }
+}
+
+.dashboard-info-list {
+  margin-top: $space-20;
+
+  &--inline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 0;
+  }
+}
+
+.dashboard-mini-card {
+  display: grid;
+  gap: $space-8;
+  margin: 0;
+
+  div {
+    display: grid;
+    gap: $space-4;
+    padding: $space-12;
+    border-radius: $radius-sm;
+    background: $color-bg-soft;
+  }
+
+  dt {
+    color: $color-muted;
+    font-size: $text-body-xs;
+    font-weight: $weight-body-bold;
+    letter-spacing: $tracking-lg;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    color: $color-text-strong;
+    font-size: $text-body-lg;
+    font-weight: $weight-heading-bold;
+    line-height: $leading-md;
+  }
+}
+
+.dashboard-timeline {
+  counter-reset: dashboard-timeline;
+
+  li {
+    position: relative;
+    padding-left: $space-40;
+
+    &::before {
+      counter-increment: dashboard-timeline;
+      content: counter(dashboard-timeline);
+      position: absolute;
+      left: $space-12;
+      top: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $space-20;
+      height: $space-20;
+      border-radius: $radius-full;
+      background: $color-primary;
+      color: $color-white;
+      font-size: $text-body-xs;
+      font-weight: $weight-body-bold;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.dashboard-flow--five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+// ==========================================================================
 // Monitor
 // ==========================================================================
 
