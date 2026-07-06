@@ -1,24 +1,762 @@
+@use 'sass:map';
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-.dashboard-page {
-  @include container;
-  padding: 56px 0;
+// ==========================================================================
+// Dashboard shell (sidebar + workspace)
+// ==========================================================================
 
-  h1 {
-    margin-bottom: 24px;
-    color: $color-primary-dark;
+.dashboard-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: $dashboard-sidebar-width minmax(0, 1fr);
+  background: $color-bg-section;
+  color: $color-text;
+}
+
+.dashboard-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: $space-32;
+  padding: $space-24;
+  overflow-y: auto;
+  background: $color-navy;
+  color: $color-white;
+}
+
+.dashboard-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-10;
+  padding: $space-4 $space-8;
+  color: $color-white;
+  text-decoration: none;
+
+  &__mark {
+    @include flex-center;
+    width: $size-control-md;
+    height: $size-control-md;
+    border-radius: $radius-sm;
+    background: linear-gradient(135deg, $color-sky 0%, $color-blue 100%);
+    font-family: $font-primary;
+    font-size: $text-heading-sm;
+    font-weight: $weight-heading-extrabold;
   }
 
-  &__grid {
+  &__text {
+    font-size: $text-heading-xs;
+    font-weight: $weight-heading-bold;
+    letter-spacing: $tracking-sm;
+  }
+}
+
+.dashboard-sidebar__nav {
+  display: grid;
+  gap: $space-4;
+}
+
+.dashboard-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: $space-12;
+  min-height: $size-control-md;
+  padding: 0 $space-12;
+  border-radius: $radius-sm;
+  color: rgba($color-white, 0.62);
+  font-size: $text-body-lg;
+  font-weight: $weight-body-semibold;
+  text-decoration: none;
+  transition:
+    background $transition-fast,
+    color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    background: rgba($color-white, 0.06);
+    color: $color-white;
+  }
+
+  &.is-active {
+    background: rgba($color-white, 0.1);
+    color: $color-white;
+
+    .dashboard-sidebar__dot {
+      background: $color-sky;
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($color-sky, 0.4);
+    outline-offset: 2px;
+  }
+}
+
+.dashboard-sidebar__dot {
+  flex: 0 0 auto;
+  width: $space-6;
+  height: $space-6;
+  border-radius: 50%;
+  background: rgba($color-white, 0.28);
+  transition: background $transition-fast;
+}
+
+.dashboard-sidebar__profile {
+  display: grid;
+  gap: $space-6;
+  margin-top: auto;
+  padding: $space-16;
+  border-radius: $radius-md;
+  background: rgba($color-white, 0.06);
+
+  strong {
+    font-size: $text-heading-xs;
+    font-weight: $weight-heading-bold;
+    line-height: $leading-sm;
+  }
+
+  p {
+    margin: 0;
+    color: rgba($color-white, 0.64);
+    font-size: $text-body-md;
+    font-weight: $weight-body-medium;
+    line-height: $leading-md;
+  }
+}
+
+.dashboard-sidebar__label {
+  color: rgba($color-white, 0.5);
+  font-size: $text-body-xs;
+  font-weight: $weight-body-bold;
+  letter-spacing: $tracking-xl;
+  text-transform: uppercase;
+}
+
+.dashboard-sidebar__logout {
+  @include flex-center;
+  min-height: $size-control-md;
+  border: 1px solid rgba($color-white, 0.16);
+  border-radius: $radius-sm;
+  color: rgba($color-white, 0.85);
+  font-size: $text-body-md;
+  font-weight: $weight-body-semibold;
+  text-decoration: none;
+  transition:
+    border-color $transition-fast,
+    background $transition-fast,
+    color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgba($color-white, 0.3);
+    background: rgba($color-white, 0.08);
+    color: $color-white;
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($color-sky, 0.4);
+    outline-offset: 2px;
+  }
+}
+
+.dashboard-workspace {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: $space-24;
+  padding: $space-32 $space-40 $space-48;
+}
+
+// ==========================================================================
+// Hero (플랫 헤더 — 카드 대신 배경 위 타이틀 행)
+// ==========================================================================
+
+.dashboard-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: $space-24;
+  padding: $space-8 $space-4 $space-16;
+  border-bottom: 1px solid $color-border;
+}
+
+.dashboard-hero__copy {
+  display: grid;
+  gap: $space-8;
+
+  h1 {
+    margin: 0;
+    color: $color-text-strong;
+    font-size: $text-heading-lg;
+    font-weight: $weight-heading-extrabold;
+    letter-spacing: $tracking-xs;
+    line-height: $leading-sm;
+    word-break: keep-all;
+  }
+
+  p {
+    margin: 0;
+    color: $color-muted;
+    font-size: $text-body-lg;
+    font-weight: $weight-body-medium;
+    line-height: $leading-lg;
+    word-break: keep-all;
+  }
+}
+
+.dashboard-eyebrow,
+.dashboard-panel__eyebrow {
+  color: $color-primary;
+  font-size: $text-body-xs;
+  font-weight: $weight-body-bold;
+  letter-spacing: $tracking-xl;
+  text-transform: uppercase;
+}
+
+.dashboard-hero__meta {
+  display: grid;
+  justify-items: end;
+  gap: $space-4;
+  color: $color-muted;
+  font-size: $text-body-sm;
+  font-weight: $weight-body-medium;
+
+  strong {
+    color: $color-text-strong;
+    font-size: $text-body-xl;
+    font-weight: $weight-heading-bold;
+  }
+}
+
+.dashboard-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: $space-8;
+  margin-top: $space-8;
+}
+
+.dashboard-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $size-control-md;
+  padding: 0 $space-16;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  background: $color-white;
+  color: $color-primary-dark;
+  font-size: $text-body-md;
+  font-weight: $weight-body-bold;
+  text-decoration: none;
+  transition:
+    border-color $transition-fast,
+    background $transition-fast,
+    color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-border-blue;
+    background: $color-primary-light;
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba($color-primary, 0.18);
+    outline-offset: 2px;
+  }
+
+  &--primary {
+    border-color: $color-primary;
+    background: $color-primary;
+    color: $color-white;
+
+    &:hover,
+    &:focus-visible {
+      border-color: $color-primary-dark;
+      background: $color-primary-dark;
+    }
+  }
+}
+
+// ==========================================================================
+// Summary cards row
+// ==========================================================================
+
+.dashboard-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: $space-16;
+}
+
+// ==========================================================================
+// Panels
+// ==========================================================================
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 0.85fr);
+  align-items: start;
+  gap: $space-16;
+}
+
+.dashboard-panel {
+  min-width: 0;
+  padding: $space-24;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-white;
+}
+
+.dashboard-panel__titlebar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-16;
+  margin-bottom: $space-20;
+
+  h2 {
+    margin: $space-4 0 0;
+    color: $color-text-strong;
+    font-size: $text-heading-sm;
+    font-weight: $weight-heading-bold;
+    line-height: $leading-sm;
+  }
+
+  p {
+    margin: $space-6 0 0;
+    color: $color-muted;
+    font-size: $text-body-md;
+    font-weight: $weight-body-medium;
+    line-height: $leading-md;
+    word-break: keep-all;
+  }
+}
+
+// ==========================================================================
+// Status pill (톤 변형은 $status-tones 맵에서 일괄 생성)
+// ==========================================================================
+
+.dashboard-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $size-control-xs;
+  padding: $space-2 $space-10;
+  border-radius: $radius-full;
+  font-size: $text-body-sm;
+  font-weight: $weight-body-bold;
+  line-height: $leading-md;
+  white-space: nowrap;
+
+  @each $tone, $colors in $status-tones {
+    &--#{$tone} {
+      background: rgba(map.get($colors, base), 0.12);
+      color: map.get($colors, text);
+    }
+  }
+}
+
+// ==========================================================================
+// Flow (실시간 처리 흐름 — 단계 카드 + 연결 화살표)
+// ==========================================================================
+
+.dashboard-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: $space-16;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dashboard-flow__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $space-12;
+  padding: $space-16;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-soft;
+
+  &:not(:last-child)::after {
+    content: '›';
+    position: absolute;
+    top: 50%;
+    right: -$space-16;
+    width: $space-16;
+    transform: translateY(-50%);
+    color: $color-subtle;
+    font-size: $text-body-xl;
+    line-height: $leading-xs;
+    text-align: center;
+  }
+
+  div {
+    min-width: 0;
+  }
+
+  strong {
+    display: block;
+    color: $color-text-strong;
+    font-size: $text-body-lg;
+    font-weight: $weight-heading-bold;
+    line-height: $leading-md;
+    word-break: keep-all;
+  }
+
+  p {
+    margin: $space-4 0 0;
+    color: $color-muted;
+    font-size: $text-body-sm;
+    font-weight: $weight-body-medium;
+    line-height: $leading-md;
+    word-break: keep-all;
+  }
+
+  b {
+    margin-top: auto;
+    color: $color-text-strong;
+    font-family: $font-primary;
+    font-size: $text-heading-md;
+    font-weight: $weight-heading-extrabold;
+    line-height: $leading-xs;
+  }
+}
+
+.dashboard-flow__step {
+  @include flex-center;
+  width: $size-control-sm;
+  height: $size-control-sm;
+  border-radius: $radius-sm;
+  font-family: $font-primary;
+  font-size: $text-body-md;
+  font-weight: $weight-body-bold;
+
+  @each $tone, $colors in $status-tones {
+    &--#{$tone} {
+      background: rgba(map.get($colors, base), 0.14);
+      color: map.get($colors, text);
+    }
+  }
+}
+
+// ==========================================================================
+// Priority list
+// ==========================================================================
+
+.dashboard-priority {
+  display: grid;
+  gap: $space-8;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dashboard-priority__item {
+  display: grid;
+  gap: $space-6;
+  padding: $space-12 $space-16;
+  border-left: $space-4 solid $color-primary;
+  border-radius: $radius-sm;
+  background: $color-bg-soft;
+
+  strong {
+    color: $color-text-strong;
+    font-size: $text-body-lg;
+    font-weight: $weight-heading-bold;
+    line-height: $leading-md;
+  }
+
+  p {
+    margin: $space-2 0 0;
+    color: $color-muted;
+    font-size: $text-body-sm;
+    font-weight: $weight-body-medium;
+    line-height: $leading-md;
+    word-break: keep-all;
+  }
+
+  span {
+    font-size: $text-body-sm;
+    font-weight: $weight-body-bold;
+  }
+
+  @each $tone, $colors in $status-tones {
+    &--#{$tone} {
+      border-left-color: map.get($colors, base);
+      background: rgba(map.get($colors, base), 0.06);
+
+      span {
+        color: map.get($colors, text);
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// Records table
+// ==========================================================================
+
+.dashboard-table-wrap {
+  overflow-x: auto;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: $space-12;
+    border-bottom: 1px solid $color-border;
+    text-align: left;
+    vertical-align: middle;
+    font-size: $text-body-md;
+    line-height: $leading-md;
+    white-space: nowrap;
+  }
+
+  thead th {
+    background: $color-bg-soft;
+    color: $color-muted;
+    font-size: $text-body-xs;
+    font-weight: $weight-body-bold;
+    letter-spacing: $tracking-lg;
+    text-transform: uppercase;
+
+    &:first-child {
+      border-radius: $radius-sm 0 0 $radius-sm;
+    }
+
+    &:last-child {
+      border-radius: 0 $radius-sm $radius-sm 0;
+    }
+  }
+
+  tbody th {
+    color: $color-primary-dark;
+    font-family: $font-primary;
+    font-weight: $weight-body-bold;
+  }
+
+  tbody td {
+    color: $color-text;
+    font-weight: $weight-body-medium;
+  }
+
+  tbody tr {
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $color-bg-soft;
+    }
+  }
+
+  tbody tr:last-child th,
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+// ==========================================================================
+// Monitor
+// ==========================================================================
+
+.dashboard-monitor {
+  display: grid;
+  gap: $space-8;
+  margin: 0;
+}
+
+.dashboard-monitor__item {
+  display: grid;
+  gap: $space-6;
+  padding: $space-16;
+  border-radius: $radius-sm;
+
+  dt {
+    font-size: $text-body-xs;
+    font-weight: $weight-body-bold;
+    letter-spacing: $tracking-lg;
+    text-transform: uppercase;
+  }
+
+  dd {
     display: grid;
+    gap: $space-4;
+    margin: 0;
+  }
+
+  strong {
+    color: $color-text-strong;
+    font-family: $font-primary;
+    font-size: $text-heading-md;
+    font-weight: $weight-heading-extrabold;
+    line-height: $leading-xs;
+  }
+
+  span {
+    color: $color-muted;
+    font-size: $text-body-sm;
+    font-weight: $weight-body-medium;
+    line-height: $leading-md;
+  }
+
+  @each $tone, $colors in $status-tones {
+    &--#{$tone} {
+      background: rgba(map.get($colors, base), 0.07);
+
+      dt {
+        color: map.get($colors, text);
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// Access denied
+// ==========================================================================
+
+.dashboard-access {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-40 $space-20;
+  background: $color-bg-section;
+}
+
+.dashboard-access__card {
+  width: min(100%, 520px); /* one-off: 안내 카드 최대 폭 */
+  display: grid;
+  gap: $space-16;
+  padding: $space-40;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-white;
+  box-shadow: $shadow-md;
+
+  h1 {
+    margin: 0;
+    color: $color-text-strong;
+    font-size: $text-heading-lg;
+    font-weight: $weight-heading-extrabold;
+    line-height: $leading-sm;
+  }
+
+  p {
+    margin: 0;
+    color: $color-muted;
+    font-size: $text-body-lg;
+    font-weight: $weight-body-medium;
+    line-height: $leading-lg;
+    word-break: keep-all;
+  }
+}
+
+.dashboard-access__eyebrow {
+  color: $color-primary;
+  font-size: $text-body-xs;
+  font-weight: $weight-body-bold;
+  letter-spacing: $tracking-xl;
+  text-transform: uppercase;
+}
+
+.dashboard-access__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-8;
+  margin-top: $space-8;
+}
+
+// ==========================================================================
+// Responsive
+// ==========================================================================
+
+@media (max-width: $breakpoint-desktop) {
+  .dashboard-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-flow__item::after {
+    content: none;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .dashboard-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sidebar {
+    position: static;
+    height: auto;
+    padding: $space-24 $space-32;
+  }
+
+  .dashboard-sidebar__nav {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+  }
+
+  .dashboard-sidebar__profile {
+    margin-top: 0;
+  }
+
+  .dashboard-workspace {
+    padding: $space-28 $space-32 $space-40;
+  }
+
+  .dashboard-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-hero__meta {
+    justify-items: start;
+  }
+
+  .dashboard-hero__actions {
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: $breakpoint-mobile) {
-  .dashboard-page__grid {
+  .dashboard-sidebar,
+  .dashboard-workspace {
+    padding-inline: $space-20;
+  }
+
+  .dashboard-sidebar__nav {
     grid-template-columns: 1fr;
+  }
+
+  .dashboard-hero__copy h1 {
+    font-size: $text-heading-md;
+  }
+
+  .dashboard-summary,
+  .dashboard-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-panel {
+    padding: $space-20;
+  }
+}
+
+@media (max-width: $breakpoint-small-mobile) {
+  .dashboard-hero__actions,
+  .dashboard-action {
+    width: 100%;
   }
 }

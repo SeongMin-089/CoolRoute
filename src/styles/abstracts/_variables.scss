@@ -76,9 +76,39 @@ $color-nav-text: #3A3357;
 $color-nav-active-text: #1D4ED8;
 $color-nav-active-bg: #EDF1FB;
 
+// 상태색: 5개 의미 슬롯 (지침 §4 — 시맨틱 카테고리)
 $color-status-ok: #19c37d;
 $color-status-warn: #f0a52e;
 $color-status-risk: #f0596a;
+$color-status-info: #2454d8;
+$color-status-neutral: #64748b;
+
+// 상태 텍스트색: 틴트 배경 위 대비 확보용 분리 세트 (지침 §4 — 카테고리 분할)
+$color-status-ok-text: #0e9e66;
+$color-status-warn-text: #b97a10;
+$color-status-risk-text: #d63c50;
+$color-status-info-text: #173b9f;
+$color-status-neutral-text: #475569;
+
+// 톤 변형 공용 맵 (dashboard 계열 컴포넌트에서 @each로 사용)
+$status-tones: (
+  'ok': (
+    base: $color-status-ok,
+    text: $color-status-ok-text,
+  ),
+  'warn': (
+    base: $color-status-warn,
+    text: $color-status-warn-text,
+  ),
+  'risk': (
+    base: $color-status-risk,
+    text: $color-status-risk-text,
+  ),
+  'info': (
+    base: $color-status-info,
+    text: $color-status-info-text,
+  ),
+);
 
 // ==============================
 // Spacing
@@ -104,6 +134,60 @@ $space-80: 80px;
 $space-96: 96px;
 $space-120: 120px;
 $space-140: 140px;
+
+// ==============================
+// Typography scale (지침 §4)
+// heading/body 분리, 각 5단계 고정 — 6번째 값 추가 금지
+// ==============================
+$text-heading-xs: 16px;
+$text-heading-sm: 18px;
+$text-heading-md: 22px;
+$text-heading-lg: 28px;
+$text-heading-xl: 34px;
+
+$text-body-xs: 11px;
+$text-body-sm: 12px;
+$text-body-md: 13px;
+$text-body-lg: 15px;
+$text-body-xl: 17px;
+
+$weight-heading-medium: 500;
+$weight-heading-semibold: 600;
+$weight-heading-bold: 700;
+$weight-heading-extrabold: 800;
+$weight-heading-black: 900;
+
+$weight-body-light: 300;
+$weight-body-regular: 400;
+$weight-body-medium: 500;
+$weight-body-semibold: 600;
+$weight-body-bold: 700;
+
+$leading-xs: 1;
+$leading-sm: 1.25;
+$leading-md: 1.4;
+$leading-lg: 1.6;
+$leading-xl: 1.8;
+
+$tracking-xs: -0.02em;
+$tracking-sm: -0.01em;
+$tracking-md: 0;
+$tracking-lg: 0.06em;
+$tracking-xl: 0.12em;
+
+// ==============================
+// Control sizes (버튼/입력/칩 높이, 5단계)
+// ==============================
+$size-control-xs: 24px;
+$size-control-sm: 32px;
+$size-control-md: 40px;
+$size-control-lg: 48px;
+$size-control-xl: 64px;
+
+// ==============================
+// Dashboard layout (단일값 — 5단계 규칙 예외)
+// ==============================
+$dashboard-sidebar-width: 264px;
 
 // ==============================
 // Section
