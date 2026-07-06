@@ -5,100 +5,6 @@
   background: $color-bg-soft;
 }
 
-/* 탭 메뉴 */
-.support-tab-wrap {
-  position: sticky;
-  top: calc($header-height + $space-12);
-  z-index: 20;
-  margin-top: $space-20;
-  margin-bottom: $space-24;
-  pointer-events: none;
-}
-
-.support-tabs {
-  @include container;
-  width: fit-content;
-  max-width: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $space-4;
-  overflow-x: auto;
-  padding: $space-6 $space-8;
-  border: 1px solid $color-border;
-  border-radius: $radius-md;
-  background: rgba($color-white, 0.94);
-  box-shadow: $shadow-sm;
-  backdrop-filter: blur(16px);
-  pointer-events: auto;
-}
-
-.support-tab {
-  flex: 0 0 auto;
-  min-width: 128px;
-  height: 44px;
-  padding: 0 18px;
-  border: 0;
-  border-radius: $radius-md;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: $space-8;
-  background: transparent;
-  color: $color-muted;
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    color $transition-fast,
-    background $transition-fast,
-    box-shadow $transition-fast,
-    transform $transition-fast;
-
-  &:hover {
-    color: $color-primary;
-    background: $color-primary-light;
-  }
-
-  &.is-active {
-    color: $color-white;
-    background: linear-gradient(135deg, $color-sky 0%, $color-primary 100%);
-    box-shadow: 0 8px 18px rgba($color-primary, 0.2);
-  }
-
-  @media (max-width: $breakpoint-tablet) {
-    .support-tab-wrap {
-      top: calc($header-height + $space-8);
-      margin-top: $space-16;
-      margin-bottom: $space-24;
-    }
-
-    .support-tabs {
-      width: 100%;
-      justify-content: flex-start;
-      border-radius: $radius-xl;
-    }
-
-    .support-tab {
-      min-width: 116px;
-      height: 40px;
-      padding: 0 14px;
-      font-size: 12px;
-    }
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    .support-tab {
-      min-width: 108px;
-      height: 38px;
-      padding: 0 $space-12;
-      font-size: 12px;
-    }
-  }
-}
-
 /* 전체 콘텐츠 */
 .support-content {
   @include container;
@@ -517,16 +423,6 @@
 }
 
 @media (max-width: $breakpoint-tablet) {
-  .support-tabs {
-    width: min(100% - 40px, 760px);
-    justify-content: flex-start;
-    overflow-x: auto;
-  }
-
-  .support-tab {
-    flex: 0 0 auto;
-  }
-
   .support-role-grid,
   .support-contact-grid {
     grid-template-columns: 1fr;
@@ -592,5 +488,61 @@
 
   .support-contact-card {
     padding: $space-24;
+  }
+}
+
+@media (max-width: $breakpoint-small-mobile) {
+  .support-content {
+    padding: $space-56 0;
+  }
+
+  .support-search-area {
+    margin-bottom: $space-40;
+  }
+
+  .page--support .section-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: $space-8;
+    font-size: 21px;
+  }
+
+  .support-search {
+    border-width: 2px;
+    border-radius: $radius-lg;
+  }
+
+  .support-search span {
+    display: none;
+  }
+
+  .support-faq-item summary {
+    min-height: auto;
+    padding: $space-16;
+    grid-template-columns: 36px 1fr 20px;
+    gap: $space-12;
+  }
+
+  .support-faq-item summary span {
+    width: 36px;
+    height: 36px;
+  }
+
+  .support-faq-item p {
+    padding: 0 $space-16 $space-16;
+  }
+
+  .support-guide-step {
+    padding: $space-16;
+  }
+
+  .support-role-card,
+  .support-contact-card {
+    padding: $space-20;
+  }
+
+  .support-contact-row {
+    grid-template-columns: 36px 1fr;
+    gap: $space-12;
   }
 }
