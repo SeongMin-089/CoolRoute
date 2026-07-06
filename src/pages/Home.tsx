@@ -118,8 +118,8 @@ const networkRegions: NetworkRegion[] = [
     title: "수도권 메인 허브",
     description: "서울·경기 점포 순환 · 야간 회차",
     mapLabel: "수도권",
-    x: 42,
-    y: 21,
+    x: 30.7,
+    y: 22.2,
   },
   {
     id: "gangwon",
@@ -127,8 +127,8 @@ const networkRegions: NetworkRegion[] = [
     title: "강원 거점",
     description: "강원권 간선 연계 · 정온 중계",
     mapLabel: "강원",
-    x: 51,
-    y: 16,
+    x: 49.4,
+    y: 16.9,
   },
   {
     id: "chungcheong",
@@ -136,8 +136,8 @@ const networkRegions: NetworkRegion[] = [
     title: "충청 크로스도크",
     description: "중부권 분기 · 긴급 배차",
     mapLabel: "충청",
-    x: 46,
-    y: 42,
+    x: 40.1,
+    y: 44.5,
   },
   {
     id: "yeongnam",
@@ -145,8 +145,8 @@ const networkRegions: NetworkRegion[] = [
     title: "영남 냉동 거점",
     description: "냉동 간편식 · 아이스크림 보관",
     mapLabel: "영남",
-    x: 63,
-    y: 51,
+    x: 71.6,
+    y: 54,
   },
   {
     id: "honam",
@@ -154,8 +154,8 @@ const networkRegions: NetworkRegion[] = [
     title: "호남 물류",
     description: "호남권 출고 · 권역 일괄 처리",
     mapLabel: "호남",
-    x: 38,
-    y: 63,
+    x: 25.3,
+    y: 66.7,
   },
   {
     id: "jeju",
@@ -163,8 +163,8 @@ const networkRegions: NetworkRegion[] = [
     title: "제주 연계망",
     description: "도서 지역 출고 이력 일일 리포트",
     mapLabel: "제주",
-    x: 34,
-    y: 89,
+    x: 17.9,
+    y: 94.2,
   },
 ]
 
