@@ -404,41 +404,6 @@
     word-break: keep-all;
   }
 }
-/* 모바일 대응 */
-/* 기존의 잘못 매칭된 코드를 지우고, 맨 아래 모바일 미디어 쿼리를 아래처럼 정돈합니다 */
-
-@media (max-width: $breakpoint-mobile) {
-  .temp-grid,
-  .quality-grid,
-  .point-layout {
-    grid-template-columns: 1fr;
-    flex-direction: column;
-  }
-
-  .gray-banner-frame,
-  .gray-banner-frame2,
-  .gray-banner-frame3 {
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    padding: 12px;
-  }
-
-  .inner-fluid-img {
-    height: 180px;
-  }
-
-  /* 🎯 반드시 이 @media { ... } 안쪽에 위치해야 모바일에서만 작동합니다! */
-  .point-image-area {
-    width: 100%;
-    height: 240px; /* 모바일 전용 높이 */
-  }
-
-  .point-grid {
-    width: 100%;
-    grid-template-columns: 1fr;
-  }
-} // 👈 미디어 쿼리가 여기서 깔끔하게 닫혀야 합니다.
 @media (max-width: $breakpoint-small-tablet) {
   .content-wrapper {
     padding: $space-80 0;
@@ -490,6 +455,36 @@
   .content-wrapper {
     padding: $space-72 0;
     gap: $space-72;
+  }
+
+  .temp-grid,
+  .quality-grid,
+  .point-layout {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .gray-banner-frame,
+  .gray-banner-frame2,
+  .gray-banner-frame3 {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    padding: 12px;
+  }
+
+  .inner-fluid-img {
+    height: 180px;
+  }
+
+  .point-image-area {
+    width: 100%;
+    height: 240px;
+  }
+
+  .point-grid {
+    width: 100%;
+    grid-template-columns: 1fr;
   }
 
   .section-title,
