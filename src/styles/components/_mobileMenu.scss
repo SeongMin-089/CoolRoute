@@ -2,23 +2,201 @@
 
 .mobile-menu {
   display: none;
-  width: 40px;
-  height: 40px;
-  border: 1px solid $color-border;
-  border-radius: $radius-md;
-  background: $color-white;
+
+  &__toggle {
+    position: relative;
+    z-index: 72;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: $color-white;
+    transition:
+      border-color $transition-fast,
+      background $transition-fast,
+      box-shadow $transition-fast;
+  }
+
+  &__toggle:hover,
+  &__toggle:focus-visible {
+    border-color: rgba($color-primary, 0.35);
+    background: $color-primary-light;
+    box-shadow: $shadow-sm;
+  }
 
   &__line {
     display: block;
     width: 18px;
     height: 2px;
-    margin: 4px auto;
+    border-radius: $radius-full;
     background: $color-primary;
+    transition:
+      transform $transition-fast,
+      opacity $transition-fast;
+  }
+
+  &.is-open &__line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  &.is-open &__line:nth-child(2) {
+    opacity: 0;
+  }
+
+  &.is-open &__line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  &__overlay {
+    position: fixed;
+    top: $header-height;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 65;
+    padding: $space-16 $container-padding-tablet $space-24;
+    background: rgba($color-navy, 0.18);
+  }
+
+  &__panel {
+    width: min(100%, 420px);
+    max-height: calc(100vh - $header-height - $space-32);
+    margin-left: auto;
+    padding: 18px;
+    border: 1px solid rgba($color-border, 0.95);
+    border-radius: $radius-lg;
+    display: grid;
+    gap: $space-16;
+    overflow-y: auto;
+    background: rgba($color-white, 0.98);
+    box-shadow: $shadow-lg;
+  }
+
+  &__tools {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-8;
+  }
+
+  &__tool {
+    width: 36px;
+    height: 36px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-bg-soft;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__list,
+  &__sub-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__list {
+    display: grid;
+    gap: $space-10;
+  }
+
+  &__item {
+    padding: $space-12;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+  }
+
+  &__link {
+    min-height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: $color-text-strong;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    word-break: keep-all;
+
+    &.is-active {
+      color: $color-primary;
+    }
+  }
+
+  &__sub-list {
+    margin-top: $space-8;
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-6;
+  }
+
+  &__sub-link {
+    min-height: 30px;
+    padding: 0 $space-10;
+    border-radius: $radius-full;
+    display: inline-flex;
+    align-items: center;
+    background: $color-badge-slate-bg;
+    color: $color-badge-slate-text;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+    word-break: keep-all;
+    transition:
+      color $transition-fast,
+      background $transition-fast;
+
+    &:hover,
+    &:focus-visible {
+      background: $color-primary-light;
+      color: $color-primary;
+    }
+  }
+
+  &__login {
+    width: min(100%, 220px);
+    min-height: 44px;
+    justify-self: center;
+    border-radius: $radius-full;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $color-sky 0%, $color-primary 100%);
+    color: $color-white;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 12px 28px rgba($color-primary, 0.22);
   }
 }
 
 @media (max-width: $breakpoint-tablet) {
   .mobile-menu {
     display: block;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .mobile-menu {
+    &__overlay {
+      padding-right: $container-padding-mobile;
+      padding-left: $container-padding-mobile;
+    }
+
+    &__panel {
+      width: 100%;
+      padding: $space-16;
+      border-radius: $radius-md;
+    }
   }
 }

@@ -337,7 +337,7 @@
 
 .home-network__map {
   position: relative;
-  width: min(100%, 820px);
+  width: min(100%, 880px);
 }
 
 .home-network__map-image {
@@ -1256,8 +1256,8 @@
   }
 
   .home-network__inner {
-    grid-template-columns: minmax(420px, 520px) 1fr;
-    gap: $space-40;
+    grid-template-columns: minmax(400px, 500px) 1fr;
+    gap: $space-32;
   }
 
   .home-network h2 {
@@ -1269,7 +1269,7 @@
   }
 
   .home-network__map {
-    width: min(100%, 700px);
+    width: min(100%, 760px);
   }
 
   .home-operation__body {
@@ -1360,7 +1360,7 @@
   }
 
   .home-network__map {
-    width: min(100%, 720px);
+    width: min(100%, 780px);
   }
 
   .home-operation {
@@ -1550,7 +1550,7 @@
   }
 
   .home-network__map {
-    width: min(100%, 700px);
+    width: min(100%, 730px);
   }
 
   .home-operation__body {
@@ -1620,16 +1620,16 @@
   }
 
   .home-hero__actions {
-    width: 100%;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: $space-10;
     margin-top: $space-24;
   }
 
   .home-hero__actions .button {
-    width: 100%;
+    width: min(100%, 250px);
     justify-content: center;
+    white-space: nowrap;
   }
 
   .home-hero__stats {
@@ -1659,7 +1659,7 @@
   }
 
   .home-network__map {
-    width: min(100%, 640px);
+    width: min(100%, 700px);
   }
 
   .home-network__pin {
@@ -1806,8 +1806,9 @@
   }
 
   .home-system__content .button {
-    width: 100%;
+    width: min(100%, 230px);
     justify-content: center;
+    white-space: nowrap;
   }
 
   .home-cta {
@@ -1828,13 +1829,13 @@
   }
 
   .home-cta__actions {
-    width: 100%;
     flex-direction: column;
   }
 
   .home-cta__actions .button {
-    width: 100%;
+    width: min(100%, 250px);
     justify-content: center;
+    white-space: nowrap;
   }
 }
 
@@ -1935,7 +1936,7 @@
   }
 
   .home-network__map {
-    width: min(100%, 560px);
+    width: 100%;
   }
 
   .home-network__pin {
