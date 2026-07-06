@@ -62,9 +62,9 @@ export interface DashboardRoleData {
 }
 
 export interface DashboardData {
-  store: DashboardCardItem[]
-  driver: DashboardCardItem[]
-  center: DashboardCardItem[]
+  store: DashboardCardItem[];
+  driver: DashboardCardItem[];
+  center: DashboardCardItem[];
 }
 
 export const dashboardRoleData: Record<DashboardRole, DashboardRoleData> = {
