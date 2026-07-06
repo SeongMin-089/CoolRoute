@@ -56,9 +56,9 @@ export const subNavItems: SubNavData = {
     },
   ],
   solution: [
-    { label: "통합 관리 시스템", id: "integrated" },
-    { label: "역할별 관리 시스템", id: "role-system" },
-    { label: "온도 모니터링", id: "temperature" },
+    { label: '통합 관리 시스템', id: 'integrated' },
+    { label: '온도 모니터링', id: 'temperature' },
+    { label: '역할별 관리 시스템', id: 'role-system' },
   ],
   logisticsInfo: [
     { label: "콜드체인이란?", id: "definition" },

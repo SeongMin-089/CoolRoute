@@ -3,25 +3,6 @@
 
 .page--recruit {
   background: #fafcfe;
-
-  .page-hero--image {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 0;
-    }
-
-    > * {
-      position: relative;
-      z-index: 1;
-    }
-  }
 }
 
 .recruit-content {

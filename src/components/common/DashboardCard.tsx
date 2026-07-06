@@ -1,16 +1,28 @@
+import type { DashboardTone } from '../../data/dashboardData'
+
 interface DashboardCardProps {
-  title: string;
-  text?: string;
+  label: string
+  value: string
+  meta: string
+  trend: string
+  tone?: DashboardTone
 }
 
 function DashboardCard({
-  title,
-  text = "Dashboard card placeholder",
+  label,
+  value,
+  meta,
+  trend,
+  tone = 'info',
 }: DashboardCardProps) {
   return (
-    <article className="dashboard-card">
-      <h3>{title}</h3>
-      <p>{text}</p>
+    <article className={`dashboard-card dashboard-card--${tone}`}>
+      <div className="dashboard-card__topline">
+        <span className="dashboard-card__label">{label}</span>
+        <span className="dashboard-card__trend">{trend}</span>
+      </div>
+      <strong className="dashboard-card__value">{value}</strong>
+      <p className="dashboard-card__meta">{meta}</p>
     </article>
   );
 }

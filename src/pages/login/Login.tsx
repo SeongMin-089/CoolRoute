@@ -1,17 +1,24 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
+import type { DashboardRole } from '../../data/dashboardData'
+import { setStoredDashboardRole } from '../../utils/dashboardAuth'
 
-const roleOptions = [
+const roleOptions: Array<{
+  id: DashboardRole
+  label: string
+  path: string
+  description: string
+}> = [
   {
     id: 'store',
-    label: '점주',
+    label: '편의점주',
     path: '/dashboard/store',
     description: '발주, 배송 현황, 폐기 상품을 확인합니다.',
   },
   {
     id: 'driver',
-    label: '배송기사',
+    label: '물류기사',
     path: '/dashboard/driver',
     description: '오늘 배송 목록과 배송 처리 상태를 확인합니다.',
   },
@@ -42,6 +49,7 @@ function Login() {
     }
 
     setErrorMessage('')
+    setStoredDashboardRole(selectedRole.id)
     navigate(selectedRole.path)
   }
 

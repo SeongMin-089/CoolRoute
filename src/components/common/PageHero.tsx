@@ -1,33 +1,37 @@
-import type { CSSProperties } from 'react'
+import { Link } from 'react-router-dom'
 
 interface PageHeroProps {
+  eyebrow?: string
   title: string
   description?: string
-  eyebrow?: string
+  image?: string
   backgroundImage?: string
 }
 
-function PageHero({
-  title,
-  description,
-  eyebrow,
-  backgroundImage,
-}: PageHeroProps) {
-  const style = backgroundImage
-    ? ({ '--page-hero-bg': `url(${backgroundImage})` } as CSSProperties)
-    : undefined
+function PageHero({ title, description, image, backgroundImage }: PageHeroProps) {
+  const heroImage = image ?? backgroundImage
 
   return (
-    <section
-      className={`page-hero${backgroundImage ? ' page-hero--image' : ''}`}
-      style={style}
-    >
+    <section className={`page-hero${heroImage ? ' page-hero--image' : ''}`}>
+      {heroImage && (
+        <img
+          className="page-hero__image"
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+        />
+      )}
+
       <div className="page-hero__inner">
-        {eyebrow && <p className="page-hero__eyebrow">{eyebrow}</p>}
+        <nav className="page-hero__breadcrumb" aria-label="Breadcrumb">
+          <Link to="/">홈</Link>
+          <span aria-hidden="true">›</span>
+          <strong>{title}</strong>
+        </nav>
+
         <h1>{title}</h1>
-        {description && (
-          <p className="page-hero__description">{description}</p>
-        )}
+
+        {description && <p>{description}</p>}
       </div>
     </section>
   );

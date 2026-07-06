@@ -125,7 +125,7 @@ function Recruit() {
         eyebrow="홈 › 인재채용"
         title="인재채용"
         description="콜드체인의 신선함을 끝까지 지키는 사람들. CoolRoute와 함께 성장할 인재를 찾습니다."
-        backgroundImage="/recruit-hero-bg.png"
+        image="/recruit-hero-bg.png"
       />
 
       <SubNav items={subNavItems.recruit} />
