@@ -440,7 +440,7 @@
 
 @media (max-width: $breakpoint-mobile) {
   .support-content {
-    padding: $space-56 0 $space-96;
+    padding: $space-48 0 $space-80;
   }
 
   .support-search-area {
@@ -478,12 +478,43 @@
 
   .support-guide-step {
     grid-template-columns: 40px 1fr;
-    gap: $space-12;
+    gap: $space-10 $space-12;
+    min-height: auto;
+    padding: 14px $space-16;
+
+    > span {
+      width: 38px;
+      height: 38px;
+      font-size: 13px;
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    p {
+      margin-top: $space-4;
+      font-size: 13px;
+      line-height: 1.55;
+    }
 
     strong {
       grid-column: 2;
+      font-size: 12px;
       text-align: left;
     }
+  }
+
+  .support-section-desc {
+    margin-bottom: $space-20;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .support-guide-steps {
+    gap: $space-10;
+    margin-bottom: $space-24;
   }
 
   .support-contact-card {
@@ -493,7 +524,7 @@
 
 @media (max-width: $breakpoint-small-mobile) {
   .support-content {
-    padding: $space-56 0;
+    padding: $space-40 0 $space-64;
   }
 
   .support-search-area {
@@ -533,7 +564,40 @@
   }
 
   .support-guide-step {
-    padding: $space-16;
+    grid-template-columns: 34px 1fr;
+    gap: $space-8 $space-10;
+    padding: 14px;
+
+    > span {
+      width: 34px;
+      height: 34px;
+      border-radius: $radius-sm;
+      font-size: 12px;
+    }
+
+    h3 {
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    strong {
+      font-size: 12px;
+    }
+  }
+
+  .support-section-desc {
+    margin-bottom: $space-16;
+    line-height: 1.55;
+  }
+
+  .support-guide-steps {
+    gap: $space-8;
+    margin-bottom: $space-20;
   }
 
   .support-role-card,
