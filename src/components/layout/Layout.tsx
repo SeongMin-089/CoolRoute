@@ -5,17 +5,26 @@ import QuickMenu from '../common/QuickMenu'
 import ScrollToHash from '../common/ScrollToHash'
 
 function Layout() {
+  const location = useLocation();
+
+  const isDashboardPage = location.pathname.startsWith("/dashboard");
+
   return (
-    <div className="app-layout">
-      <ScrollToHash />
-      <Header />
-      <main className="app-main">
+    <div
+      className={`app-layout ${isDashboardPage ? "app-layout--dashboard" : ""}`}
+    >
+      {!isDashboardPage && <Header />}
+
+      <main
+        className={`app-main ${isDashboardPage ? "app-main--dashboard" : ""}`}
+      >
         <Outlet />
       </main>
-      <Footer />
-      <QuickMenu />
+
+      {!isDashboardPage && <Footer />}
+      {!isDashboardPage && <QuickMenu />}
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

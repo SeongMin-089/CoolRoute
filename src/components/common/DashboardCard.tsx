@@ -24,7 +24,7 @@ function DashboardCard({
       <strong className="dashboard-card__value">{value}</strong>
       <p className="dashboard-card__meta">{meta}</p>
     </article>
-  )
+  );
 }
 
-export default DashboardCard
+export default DashboardCard;
