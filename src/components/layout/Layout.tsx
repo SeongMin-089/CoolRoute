@@ -5,7 +5,7 @@ import QuickMenu from '../common/QuickMenu'
 import ScrollToHash from '../common/ScrollToHash'
 
 function Layout() {
-  const location = useLocation();
+  
 
   const isDashboardPage = location.pathname.startsWith("/dashboard");
 
