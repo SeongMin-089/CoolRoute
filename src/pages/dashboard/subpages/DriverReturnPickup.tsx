@@ -1,7 +1,7 @@
-import DashboardView from '../DashboardView'
+import DashboardView from "../DashboardView";
 
 function DriverReturnPickup() {
-  return <DashboardView role="driver" />
+  return <DashboardView role="driver" />;
 }
 
-export default DriverReturnPickup
+export default DriverReturnPickup;
