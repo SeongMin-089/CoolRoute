@@ -1,16 +1,30 @@
-# React + Vite
+# CoolRoute
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+CoolRoute는 편의점 콜드체인 물류 업무를 관리하기 위한 React 기반 웹 프로젝트입니다.
 
-Currently, two official plugins are available:
+점주, 배송기사, 물류센터로 사용자를 구분하고, 각 역할에 맞는 대시보드와 관리 화면을 제공합니다. 기업 소개용 랜딩페이지와 역할별 물류 시스템을 하나의 서비스 흐름으로 구성했습니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 주요 기능
 
-## React Compiler
+- 점주: 상품 발주, 배송 현황, 입고 및 폐기 관리
+- 배송기사: 배송 일정, 점포 정보, 배송 완료 및 미배송 처리
+- 물류센터: 재고, 발주 승인, 입출고, 냉장·냉동 온도 관리
+- 역할 선택 로그인
+- 기업 소개 및 물류 서비스 안내
+- 반응형 웹 지원
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 기술 스택
 
-## Expanding the Oxlint configuration
+- React
+- TypeScript
+- Vite
+- React Router
+- SCSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 실행 방법
+
+```bash
+git clone https://github.com/SeongMin-089/CoolRoute.git
+cd CoolRoute
+npm install
+npm run dev
